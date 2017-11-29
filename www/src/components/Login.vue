@@ -1,9 +1,28 @@
 <template>
     <div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <h1 class="navbar-brand" href="#">Stay on Track</h1>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <router-link :to="{name: 'Home'}">
+                            <button class="btn btn-lg btn-success">Home</button>
+                        </router-link>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 login">
-                    <h1>Log in to 'insert name here'</h1>
+                    <h1>Log in to Stay on Track</h1>
                     <!-- add error message if login fails -->
                     <p v-if="error"> {{error}}</p>
                     <form id="login" class="form" @submit.prevent="submitLogin">
@@ -30,12 +49,11 @@
 </template>
 
 <script>
-    import SignUp from './SignUp'
     export default {
         name: 'login',
         data() {
             return {
-                login:{
+                login: {
                     email: '',
                     password: ''
                 }
@@ -43,7 +61,6 @@
             }
         },
         components: {
-            SignUp
         },
         methods: {
             submitLogin() {
@@ -54,8 +71,8 @@
                 }
             }
         },
-        computed:{
-            error(){
+        computed: {
+            error() {
                 return this.$store.state.error.error
             }
         }
@@ -69,4 +86,16 @@
         background-color: rgba(0, 0, 0, 0.301);
         color: white;
     }
+    .nav button {
+        margin-top: 3rem;
+    }
+    .navbar-header {
+        padding-left: 40rem;
+    }
+    .navbar-brand {
+        font-size: 50px;
+        padding-bottom: 1em;
+    }
+
+    
 </style>
