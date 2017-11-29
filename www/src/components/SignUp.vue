@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 sign-up">
                     <h2>Sign up for 'insert name here'</h2>
-                    <form id="register" class="form" @submit="register">
+                    <form id="register" class="form" @submit="submitRegister">
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="email" name="email" class="form-control" placeholder="Email" required v-model="signUp.email">
@@ -56,9 +56,10 @@
         },
         methods: {
             submitRegister() {
+                debugger
                 if(this.signUp.password == this.signUp.rPassword){
 
-                    this.$store.dispatch('login', this.signUp)
+                    this.$store.dispatch('register', this.signUp)
                 }else{
                     console.log({error: "passwords do not match"})
                 }

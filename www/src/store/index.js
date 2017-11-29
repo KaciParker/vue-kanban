@@ -1,6 +1,7 @@
 import axios from 'axios'
 import vue from 'vue'
 import vuex from 'vuex'
+import router from '../router'
 
 let api = axios.create({
   baseURL: 'http://localhost:3000/api/',
@@ -85,13 +86,31 @@ var store = new vuex.Store({
         })
         .catch(err => { commit('handleError', err) })
     },
-    authenticate({commit, dispatch},){
+    register({ commit, dispatch}, payload){
+      auth.post('register', payload)
+        .then(res => {
+          commit('setUser', res.data.data)
+          router.push({name: 'Boards'})
+        })
+        .catch((err)=>{
+          { commit('handleError', err)}
+        })
+    },
+    authenticate({commit, dispatch}){
       auth('authenticate')
         .then(res =>{
           commit('setUser', res.data.data)
           router.push({name: 'Boards'})
         })
         .catch(()=>{
+          router.push({name: 'Home'})
+        })
+    },
+    logout({commit, dispatch}){
+      auth.delete('logout')
+        .then((user)=>{
+          user={}
+          commit('setUser', user)
           router.push({name: 'Home'})
         })
     },

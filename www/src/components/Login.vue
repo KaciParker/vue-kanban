@@ -6,7 +6,7 @@
                     <h1>Log in to 'insert name here'</h1>
                     <!-- add error message if login fails -->
                     <p v-if="error"> {{error}}</p>
-                    <form id="login" class="form" @submit.prevent="login">
+                    <form id="login" class="form" @submit.prevent="submitLogin">
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="email" name="email" class="form-control" placeholder="Email" required v-model='login.email'>

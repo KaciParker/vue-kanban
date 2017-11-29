@@ -22,6 +22,7 @@
     components:{
         Login
     }
+   
   }
   </script>
   
