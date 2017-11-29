@@ -61,6 +61,10 @@ router.get('/authenticate', (req,res) => {
     if(!user){
       return res.status(401).send({"error:": "please log in"})
     }
+    req.session.uid = user._id;
+    req.session.save()
+    user.password = null
+    delete user.password
     return res.send ({
       data: user
     })
