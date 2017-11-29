@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2>Log in to 'insert name here'</h2>
-                    <form id="registration" class="form" @submit="login(email, password)">
+                    <form id="login" class="form" @submit="login(email, password)">
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="email" name="email" class="form-control" placeholder="Email" required>
@@ -17,7 +17,7 @@
                             <button class="btn btn-success" type="submit">Log In!</button>
                         </div>
                     </form>
-                    <h4>Don't have an account? <router-link :to="signUp">Create one NOW!</router-link></h4>
+                    <h4>Don't have an account? <router-link :to="{name: 'signUp'}">Create one NOW!</router-link></h4>
 
                 </div>
             </div>
