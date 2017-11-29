@@ -20,7 +20,7 @@ var store = new vuex.Store({
     boards: [{name: 'This is total rubbish'}],
     activeBoard: {},
     error: {},
-    activeUser: {}
+    user: {}
   },
   mutations: {
     setBoards(state, data){
@@ -29,8 +29,8 @@ var store = new vuex.Store({
     handleError(state, err){
       state.error = err
     },
-    login(state, data){
-      state.activeUser = data
+    setUser(state, user){
+      state.user = user
     }
     
   },
@@ -78,13 +78,18 @@ var store = new vuex.Store({
     //LOGIN AND REGISTER
 
     login({commit, dispatch}, payload){
-      auth.post('login', {payload})
+      auth.post('login', payload )
         .then(res=>{
-          commit('login', data)
+          commit('setUser', res.data)
     })
+      .catch(err=>{commit('handleError', err)})
+  },
+
+    
+  
       
 
-    },
+  
     handleError({commit, dispatch}, err){
       commit('handleError', err)
     }

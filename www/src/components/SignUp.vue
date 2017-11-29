@@ -55,7 +55,7 @@
             SignUp
         },
         methods: {
-            register() {
+            submitRegister() {
                 if(this.signUp.password == this.signUp.rPassword){
 
                     this.$store.dispatch('login', this.signUp)

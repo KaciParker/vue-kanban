@@ -4,6 +4,8 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 login">
                     <h1>Log in to 'insert name here'</h1>
+                    <!-- add error message if login fails -->
+                    <p v-if="error"> {{error}}</p>
                     <form id="login" class="form" @submit.prevent="login">
                         <div class="form-group">
                             <label for="email">Email:</label>
@@ -44,8 +46,13 @@
             SignUp
         },
         methods: {
-            login() {
+            submitLogin() {
                 this.$store.dispatch('login', this.login)
+            }
+        },
+        computed:{
+            error(){
+                return this.$store.state.error.error
             }
         }
     }
