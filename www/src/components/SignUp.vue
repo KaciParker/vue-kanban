@@ -4,22 +4,22 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 sign-up">
                     <h2>Sign up for 'insert name here'</h2>
-                    <form id="register" class="form" @submit="register(email, userName, password)">
+                    <form id="register" class="form" @submit="register">
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            <input type="email" name="email" class="form-control" placeholder="Email" required v-model="signUp.email">
                         </div>
                         <div class="form-group">
                             <label for="displayName">Display Name:</label>
-                            <input type="text" name="displayName" class="form-control" placeholder="display name" required>
+                            <input type="text" name="displayName" class="form-control" placeholder="display name" required v-model="signUp.name">
                         </div>
                         <div class="form-group">
                             <label for="password">Password:</label>
-                            <input type="password" name="password" class="form-control" placeholder="password" required>
+                            <input type="password" name="password" class="form-control" placeholder="password" required v-model="signUp.password">
                         </div>
                         <div class="form-group">
                             <label for="reEnterPassword">Re-enter Password:</label>
-                            <input type="password" name="reEnterPassword" class="form-control" placeholder="Re Enter Password">
+                            <input type="password" name="reEnterPassword" class="form-control" placeholder="Re Enter Password" v-model="signUp.rPassword">
                         </div>
 
                         <div class="form-group">
@@ -43,15 +43,25 @@
         name: 'login',
         data() {
             return {
-
+                signUp:{
+                    email: '',
+                    name: '',
+                    password: '',
+                    rPassword: ''
+                }
             }
         },
         components: {
             SignUp
         },
         methods: {
-            login(email, password) {
-                this.$store.dispatch('login', { email, password })
+            register() {
+                if(this.signUp.password == this.signUp.rPassword){
+
+                    this.$store.dispatch('login', this.signUp)
+                }else{
+                    console.log({error: "passwords do not match"})
+                }
             }
         }
     }

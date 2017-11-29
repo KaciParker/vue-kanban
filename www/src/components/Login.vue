@@ -4,14 +4,14 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 login">
                     <h1>Log in to 'insert name here'</h1>
-                    <form id="login" class="form" @submit="login(email, password)">
+                    <form id="login" class="form" @submit.prevent="login">
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            <input type="email" name="email" class="form-control" placeholder="Email" required v-model='login.email'>
                         </div>
                         <div class="form-group">
                             <label for="password">Password:</label>
-                            <input type="password" name="password" class="form-control" placeholder="password" required>
+                            <input type="password" name="password" class="form-control" placeholder="password" required v-model='login.password'>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-success" type="submit">Log In!</button>
@@ -33,6 +33,10 @@
         name: 'login',
         data() {
             return {
+                login:{
+                    email: '',
+                    password: ''
+                }
 
             }
         },
@@ -40,8 +44,8 @@
             SignUp
         },
         methods: {
-            login(email, password) {
-                this.$store.dispatch('login', { email, password })
+            login() {
+                this.$store.dispatch('login', this.login)
             }
         }
     }
