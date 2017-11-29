@@ -19,12 +19,11 @@
     </nav>
     <div class="row">
       <div class="col-md-2 col-md-offset-10">
-        <button @click="createBoard" type="button" class="btn btn-default btn-lg">
-          <span class="glyphicon glyphicon-plus-sign"></span>
-          <b> Add Board</b>
-        </button>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+          <span class="glyphicon glyphicon-plus-sign"></span>  ADD BOARD</button>
       </div>
     </div>
+    <!-- BOARD THUMBNAILS -->
     <div class="row">
       <div v-for="board in boards" class="col-md-3">
         <router-link :to="'/boards/'+board._id">
@@ -35,7 +34,44 @@
             </div>
           </div>
         </router-link>
-        <span @click="removeBoard(board)">x</span>
+        <!-- REMOVE BUTTON -->
+        <a href="#">
+          <span @click="removeBoard(board)" class="glyphicon glyphicon-trash"></span>
+        </a>
+        <!-- <span @click="removeBoard(board)">x</span> -->
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Create New Board</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form" @submit.prevent="createBoard">
+              <div class="form-group">
+                <label for="name">Board Name:</label>
+                <input type="text" name="name" class="form-control" placeholder="board name" required v-model="board.name">
+              </div>
+              <div class="form-group">
+                <label for="description">Description:</label>
+                <input type="text" name="description" class="form-control" placeholder="what's this board for?" required v-model="board.description">
+              </div>
+              <div class="form-group">
+                <button class="btn btn-success" type="submit">Add Your New Board!</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -45,6 +81,14 @@
 <script>
   export default {
     name: 'boards',
+    data() {
+      return {
+        board: {
+          name: "",
+          description: ""
+        }
+      }
+    },
     mounted() {
       this.$store.dispatch('getBoards')
     },
@@ -55,10 +99,7 @@
     },
     methods: {
       createBoard() {
-        this.$store.dispatch('createBoard', {
-          name: 'Testing board creation',
-          description: 'blarg'
-        })
+        this.$store.dispatch('createBoard', this.board)
       },
       removeBoard(board) {
         this.$store.dispatch('removeBoard', board)

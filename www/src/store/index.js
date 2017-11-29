@@ -2,6 +2,7 @@ import axios from 'axios'
 import vue from 'vue'
 import vuex from 'vuex'
 import router from '../router'
+import $ from 'jquery'
 
 let api = axios.create({
   baseURL: 'http://localhost:3000/api/',
@@ -18,7 +19,7 @@ vue.use(vuex)
 
 var store = new vuex.Store({
   state: {
-    boards: [{ name: 'This is total rubbish' }],
+    boards: [],
     activeBoard: {},
     error: {},
     user: {}
@@ -56,9 +57,8 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
-    createBoard({ commit, dispatch }, board) {
-      debugger
-      api.post('boards/', board)
+    createBoard({ commit, dispatch }, payload) {
+      api.post('boards/', payload)
         .then(res => {
           dispatch('getBoards')
         })
