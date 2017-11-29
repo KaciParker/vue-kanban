@@ -2,7 +2,7 @@
     <div>
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6 col-md-offset-3 sign-up">
                     <h2>Sign up for 'insert name here'</h2>
                     <form id="register" class="form" @submit="register(email, userName, password)">
                         <div class="form-group">
@@ -58,4 +58,10 @@
 </script>
 
 <style scoped>
+    .sign-up {
+        border: 2px ridge rgba(0, 0, 0, 0.301);
+        border-radius: 30px;
+        background-color: rgba(0, 0, 0, 0.301);
+        color:white;
+    }
 </style>

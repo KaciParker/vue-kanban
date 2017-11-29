@@ -1,9 +1,9 @@
 <template>
-    <div> 
+    <div>
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <h2>Log in to 'insert name here'</h2>
+                <div class="col-md-6 col-md-offset-3 login">
+                    <h1>Log in to 'insert name here'</h1>
                     <form id="login" class="form" @submit="login(email, password)">
                         <div class="form-group">
                             <label for="email">Email:</label>
@@ -17,34 +17,41 @@
                             <button class="btn btn-success" type="submit">Log In!</button>
                         </div>
                     </form>
-                    <h4>Don't have an account? <router-link :to="{name: 'signUp'}">Create one NOW!</router-link></h4>
+                    <h3>Don't have an account?
+                        <router-link :to="{name: 'signUp'}">Create one NOW!</router-link>
+                    </h3>
 
                 </div>
             </div>
         </div>
     </div>
-  </template>
-  
-  <script>
-      import SignUp from './SignUp'
-  export default {
-    name: 'login',
-    data(){
-        return{
-            
-        }
-    },
-    components:{
-        SignUp
-    },
-    methods:{
-        login(email, password){
-            this.$store.dispatch('login', {email, password})
+</template>
+
+<script>
+    import SignUp from './SignUp'
+    export default {
+        name: 'login',
+        data() {
+            return {
+
+            }
+        },
+        components: {
+            SignUp
+        },
+        methods: {
+            login(email, password) {
+                this.$store.dispatch('login', { email, password })
+            }
         }
     }
-  }
-  </script>
-  
-  <style scoped>
-  
-  </style>
+</script>
+
+<style scoped>
+    .login {
+        border: 2px ridge rgba(0, 0, 0, 0.301);
+        border-radius: 30px;
+        background-color: rgba(0, 0, 0, 0.301);
+        color: white;
+    }
+</style>
