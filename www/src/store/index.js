@@ -19,7 +19,8 @@ var store = new vuex.Store({
   state: {
     boards: [{name: 'This is total rubbish'}],
     activeBoard: {},
-    error: {}
+    error: {},
+    activeUser: {}
   },
   mutations: {
     setBoards(state, data){
@@ -27,7 +28,11 @@ var store = new vuex.Store({
     },
     handleError(state, err){
       state.error = err
+    },
+    login(state, data){
+      state.activeUser = data
     }
+    
   },
   actions: {
     //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts
@@ -68,6 +73,17 @@ var store = new vuex.Store({
         .catch(err=>{
           commit('handleError', err)
         })
+    },
+
+    //LOGIN AND REGISTER
+
+    login({commit, dispatch}, payload){
+      auth.post('login', {payload})
+        .then(res=>{
+          commit('login', data)
+    })
+      
+
     },
     handleError({commit, dispatch}, err){
       commit('handleError', err)
