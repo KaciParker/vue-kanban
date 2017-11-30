@@ -25,9 +25,10 @@
         <div class="col-md-10">
           <div class="row">
             <div class="col-md-2" v-for="list in lists" >
-              <lists  :title="list.name"></lists>
-              <input type="text" placeholder="Add New Task" v-model="task">
+              <list   :list="list"></list>
               <button @click="deleteList(list)">delete list</button>
+             
+              
             </div>
           </div>
         </div>
@@ -45,7 +46,8 @@
 </template>
 
 <script>
-  import lists from './Lists'
+  
+  import list from './List'
   export default {
     name: 'board',
 
@@ -53,7 +55,7 @@
       return {
         input: false,
         list: '',
-        task: ''
+        // task: ''
       }
     },
     mounted() {
@@ -61,12 +63,15 @@
 
       this.$store.dispatch('getListsByBoardId', this.board._id)
 
+      // this.$store.dispatch('getTasksByListId', this.list._id)
+
 
 
 
     },
     components: {
-      lists
+      list,
+      // tasks
     },
     computed: {
       board() {
@@ -74,7 +79,10 @@
       },
       lists() {
         return this.$store.state.lists
-      }
+      },
+      // tasks(){
+      //   return this.$store.state.tasks
+      // }
     },
     methods: {
       addNewList() {
@@ -88,7 +96,11 @@
       deleteList(list){
         console.log(list)
         this.$store.dispatch('deleteList', list)
-      }
+      },
+      // addNewTask(){
+      //   this.$store.dispatch('addNewTask',{ name: this.task, listId: this.list._id})
+      //   this.task=''
+      // }
     }
   }
 </script>

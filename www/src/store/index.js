@@ -23,7 +23,8 @@ var store = new vuex.Store({
     activeBoard: {},
     error: {},
     user: {},
-    lists:[]
+    lists:[],
+    tasks:{}
   },
   mutations: {
     setBoards(state, data) {
@@ -33,6 +34,7 @@ var store = new vuex.Store({
       state.activeBoard = board
     },
     setLists(state, lists){
+      state.lists = []
       state.lists = lists
     },
     handleError(state, err) {
@@ -40,6 +42,14 @@ var store = new vuex.Store({
     },
     setUser(state, user) {
       state.user = user
+    },
+    setTasks(state, tasks){
+      tasks.forEach(task=>{
+        if(!state.tasks[task.listId]){
+          state.tasks[task.listId] = []
+        }
+        state.tasks[task.listId].push(task)
+      })
     }
 
   },
@@ -93,6 +103,9 @@ var store = new vuex.Store({
           console.log(res)
           dispatch('getListsByBoardId', res.data.data.boardId)
         })
+        .catch(err => {
+          commit('handleError', err)
+        })
       
     },
     getListsByBoardId({commit, dispatch},boardId){
@@ -108,6 +121,27 @@ var store = new vuex.Store({
       api.delete('lists/'+list._id)
         .then(res =>{
           dispatch('getListsByBoardId', res.data.data.boardId)
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
+    addNewTask({commit,dispatch}, payload){
+      console.log(payload)
+      api.post('tasks', payload)
+        .then(res=>{
+          dispatch('getTasksByListId', {_id: res.data.data.listId, boardId: res.data.data.boardId})
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+
+    },
+    getTasksByListId({commit, dispatch}, list){
+      debugger
+      api('boards/'+list.boardId+'/lists/' + list._id + '/tasks')
+        .then(res =>{
+          commit('setTasks', res.data.data)
         })
         .catch(err => {
           commit('handleError', err)
