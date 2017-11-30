@@ -4,7 +4,7 @@
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <h1 class="navbar-brand" href="#">Stay on Track</h1>
+          <h1 class="navbar-brand" href="#">Rule Them All</h1>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

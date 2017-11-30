@@ -22,11 +22,18 @@ var store = new vuex.Store({
     boards: [],
     activeBoard: {},
     error: {},
-    user: {}
+    user: {},
+    lists:[]
   },
   mutations: {
     setBoards(state, data) {
       state.boards = data
+    },
+    setActiveBoard(state, board ){
+      state.activeBoard = board
+    },
+    setLists(state, lists){
+      state.lists = lists
     },
     handleError(state, err) {
       state.error = err
@@ -38,7 +45,7 @@ var store = new vuex.Store({
   },
   actions: {
     //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts
-
+//Board Actions
     getBoards({ commit, dispatch }) {
       console.log("GET")
       api('userboards')
@@ -72,6 +79,35 @@ var store = new vuex.Store({
       api.delete('boards/' + board._id)
         .then(res => {
           this.getBoards()
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
+
+    //List Actions
+    addNewList({commit,dispatch}, payload){
+      console.log(payload)
+      api.post('lists', payload)
+        .then(res => {
+          console.log(res)
+          dispatch('getListsByBoardId', res.data.data.boardId)
+        })
+      
+    },
+    getListsByBoardId({commit, dispatch},boardId){
+      api('boards/' +boardId +'/lists')
+      // console.log(boardId)
+        .then(res => {
+          commit('setLists', res.data.data)
+        })
+        .catch(err =>{commit('handleError', err)})
+    },
+    deleteList({commit, dispatch}, list){
+      console.log(list)
+      api.delete('lists/'+list._id)
+        .then(res =>{
+          dispatch('getListsByBoardId', res.data.data.boardId)
         })
         .catch(err => {
           commit('handleError', err)

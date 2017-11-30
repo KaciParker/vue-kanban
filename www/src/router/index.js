@@ -6,6 +6,7 @@ import Login from 'components/Login'
 import SignUp from 'components/SignUp'
 import Home from 'components/Home'
 
+
 Vue.use(Router)
 
 export default new Router({
@@ -23,7 +24,8 @@ export default new Router({
       path: '/boards/:id',
       name: 'Board',
       component: Board
-    },{
+    },
+    {
       path: '/login',
       name: 'login',
       component: Login
