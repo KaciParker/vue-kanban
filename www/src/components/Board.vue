@@ -79,6 +79,8 @@
     methods: {
       addNewList() {
         this.$store.dispatch('addNewList', { name: this.list, boardId: this.board._id })
+        this.list=''
+        this.toggleInput()
       },
       toggleInput() {
         this.input = !this.input
