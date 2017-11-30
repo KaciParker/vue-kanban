@@ -27,7 +27,7 @@
     <div class="row">
       <div v-for="board in boards" class="col-md-3">
         <router-link :to="'/boards/'+board._id">
-          <div style="background-image: url('//placehold.it/100x100')" class="thumbnail">
+          <div style="background-image: url('https://images3.alphacoders.com/161/161177.jpg')" class="thumbnail">
             <!-- <img src="//placehold.it/100x100"> -->
             <div class="caption">
               <h3>{{board.name}}</h3>
@@ -132,6 +132,6 @@
   .thumbnail {
     background-repeat: no-repeat;
     background-size: cover;
-    /* background-attachment: fixed; */
+    background-attachment: fixed;
   }
 </style>
