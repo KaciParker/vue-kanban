@@ -27,8 +27,8 @@
     <div class="row">
       <div v-for="board in boards" class="col-md-3">
         <router-link :to="'/boards/'+board._id">
-          <div class="thumbnail">
-            <img src="//placehold.it/100x100">
+          <div style="background-image: url('//placehold.it/100x100')" class="thumbnail">
+            <!-- <img src="//placehold.it/100x100"> -->
             <div class="caption">
               <h3>{{board.name}}</h3>
             </div>
@@ -53,7 +53,7 @@
             <h4 class="modal-title">Create New Board</h4>
           </div>
           <div class="modal-body">
-            <form class="form" @submit.prevent="createBoard">
+            <!-- <form class="form" @submit.prevent="createBoard"> -->
               <div class="form-group">
                 <label for="name">Board Name:</label>
                 <input type="text" name="name" class="form-control" placeholder="board name" required v-model="board.name">
@@ -63,9 +63,9 @@
                 <input type="text" name="description" class="form-control" placeholder="what's this board for?" required v-model="board.description">
               </div>
               <div class="form-group">
-                <button class="btn btn-success" type="submit">Add Your New Board!</button>
+                <button class="btn btn-success" data-dismiss="modal" @click="createBoard">Add Your New Board!</button>
               </div>
-            </form>
+            <!-- </form> -->
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -99,7 +99,12 @@
     },
     methods: {
       createBoard() {
+        debugger
         this.$store.dispatch('createBoard', this.board)
+        this.board = {
+          name: "",
+          description: ""
+        }
       },
       removeBoard(board) {
         this.$store.dispatch('removeBoard', board)
@@ -123,5 +128,10 @@
   .navbar-brand {
     font-size: 50px;
     padding-bottom: 1em;
+  }
+  .thumbnail {
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-attachment: fixed; */
   }
 </style>

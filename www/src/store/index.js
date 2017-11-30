@@ -40,7 +40,8 @@ var store = new vuex.Store({
     //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts
 
     getBoards({ commit, dispatch }) {
-      api('boards')
+      console.log("GET")
+      api('userboards')
         .then(res => {
           commit('setBoards', res.data.data)
         })
@@ -58,6 +59,7 @@ var store = new vuex.Store({
         })
     },
     createBoard({ commit, dispatch }, payload) {
+      debugger
       api.post('boards/', payload)
         .then(res => {
           dispatch('getBoards')
