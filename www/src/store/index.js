@@ -167,6 +167,7 @@ var store = new vuex.Store({
       api('tasks/' + task._id)
         .then(res => {
           commit('setActiveTask', res.data.data)
+          dispatch('getCommentsByTaskId', task)
         })
         .catch(err => {
           commit('handleError', err)
