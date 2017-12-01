@@ -24,11 +24,11 @@
       <div class="row">
         <div class="col-md-10">
           <div class="row">
-            <div class="col-md-2" v-for="list in lists" >
-              <list  :list="list"></list>
+            <div class="col-md-2" v-for="list in lists">
+              <list :list="list"></list>
               <button @click="deleteList(list)">delete list</button>
-             
-              
+
+
             </div>
           </div>
         </div>
@@ -37,7 +37,7 @@
           <div class="card" v-if="input">
             <input type="text" placeholder="List Name" v-model="list">
             <button @click="addNewList" class="btn btn-success btn-sm">Submit</button>
-            
+
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-  
+
   import list from './List'
   export default {
     name: 'board',
@@ -59,9 +59,9 @@
       }
     },
     mounted() {
-      this.$store.dispatch('getBoard', this.$route.params.id)
-
-      this.$store.dispatch('getListsByBoardId', this.board._id)
+      this.$store.dispatch('getBoard', this.$route.params.id)   
+      this.$store.dispatch('getListsByBoardId', this.$route.params.id)
+        
 
       // this.$store.dispatch('getTasksByListId', this.list._id)
 
@@ -87,13 +87,13 @@
     methods: {
       addNewList() {
         this.$store.dispatch('addNewList', { name: this.list, boardId: this.board._id })
-        this.list=''
+        this.list = ''
         this.toggleInput()
       },
       toggleInput() {
         this.input = !this.input
       },
-      deleteList(list){
+      deleteList(list) {
         console.log(list)
         this.$store.dispatch('deleteList', list)
       },

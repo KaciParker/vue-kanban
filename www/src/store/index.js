@@ -25,6 +25,7 @@ var store = new vuex.Store({
     user: {},
     lists: [],
     tasks: {},
+    activeTask: {},
     comments: {}
   },
   mutations: {
@@ -32,6 +33,7 @@ var store = new vuex.Store({
       state.boards = data
     },
     setActiveBoard(state, board) {
+      state.activeBoard = {}
       state.activeBoard = board
     },
     setLists(state, lists) {
@@ -51,15 +53,20 @@ var store = new vuex.Store({
       tasks.forEach(task => {
         state.tasks[task.listId].push(task)
       })
-      console.log(tasks)
+      // console.log(tasks)
     },
     setComments(state, comments) {
+      state.comments= {}
       comments.forEach(comment => {
         vue.set(state.comments, comment.taskId, [])
       })
       comments.forEach(comment => {
         state.comments[comment.taskId].push(comment)
       })
+    },
+    setActiveTask(state, task){
+      state.activeTask = {}
+      state.activeTask = task
     }
 
   },
@@ -107,10 +114,10 @@ var store = new vuex.Store({
 
     //List Actions
     addNewList({ commit, dispatch }, payload) {
-      console.log(payload)
+      // console.log(payload)
       api.post('lists', payload)
         .then(res => {
-          console.log(res)
+          // console.log(res)
           dispatch('getListsByBoardId', res.data.data.boardId)
         })
         .catch(err => {
@@ -127,7 +134,7 @@ var store = new vuex.Store({
         .catch(err => { commit('handleError', err) })
     },
     deleteList({ commit, dispatch }, list) {
-      console.log(list)
+      // console.log(list)
       api.delete('lists/' + list._id)
         .then(res => {
           dispatch('getListsByBoardId', res.data.data.boardId)
@@ -137,7 +144,7 @@ var store = new vuex.Store({
         })
     },
     addNewTask({ commit, dispatch }, payload) {
-      console.log(payload)
+      // console.log(payload)
       api.post('tasks', payload)
         .then(res => {
           dispatch('getTasksByListId', { _id: res.data.data.listId, boardId: res.data.data.boardId })
@@ -156,19 +163,29 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
+    getTaskbyTaskId({ commit, dispatch }, task) {
+      api('tasks/' + task._id)
+        .then(res => {
+          commit('setActiveTask', res.data.data)
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
     //Comments on Tasks
     addComment({ commit, dispatch }, payload) {
-      console.log(payload)
+      // console.log(payload)
       api.post('comments', payload)
       .then(res => {
-        console.log(res)
-        debugger
-          dispatch('getCommentsByTaskId', {_id: res.data.data.taskId, listId: res.data.data.listId, boardId: res.data.data.boardId})
+        // console.log(res)
+          dispatch('getCommentsByTaskId', {_id: res.data.data.taskId, listId: res.data.data.listId, boardId: payload.boardId})
         })
     },
     getCommentsByTaskId({commit, dispatch}, task) {
-      api('boards/' + task.boardId + '/lists/' + task.listId + '/tasks' + task._id + '/comments')
+      // console.log(task)
+      api('boards/' + task.boardId + '/lists/' + task.listId + '/tasks/' + task._id + '/comments')
       .then(res=>{
+        console.log(res)
         commit('setComments', res.data.data)
       })
       .catch(err => {
