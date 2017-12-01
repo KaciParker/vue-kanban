@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row list">
-            <div class="col-md-12">
+            <div class="col-md-12 well">
                 <h1>{{list.name}}</h1>
                 <div v-for="task in tasks">
                     <task :task="task"></task>
@@ -32,7 +32,6 @@
             
         },
         mounted(){
-            debugger
             this.$store.dispatch('getTasksByListId', this.list)
         },
         computed: {
@@ -43,7 +42,7 @@
         },
         methods: {
             addNewTask() {
-                this.$store.dispatch('addNewTask', { name: this.newTask, listId: this.list._id })
+                this.$store.dispatch('addNewTask', { name: this.newTask, listId: this.list._id, boardId: this.list.boardId })
                 this.newTask = ''
             }
         }

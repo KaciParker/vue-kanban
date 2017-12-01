@@ -23,17 +23,18 @@ var store = new vuex.Store({
     activeBoard: {},
     error: {},
     user: {},
-    lists:[],
-    tasks:{},
-   },
+    lists: [],
+    tasks: {},
+    comments: {}
+  },
   mutations: {
     setBoards(state, data) {
       state.boards = data
     },
-    setActiveBoard(state, board ){
+    setActiveBoard(state, board) {
       state.activeBoard = board
     },
-    setLists(state, lists){
+    setLists(state, lists) {
       state.lists = []
       state.lists = lists
     },
@@ -43,20 +44,28 @@ var store = new vuex.Store({
     setUser(state, user) {
       state.user = user
     },
-    setTasks(state, tasks){
-      tasks.forEach(task=>{
+    setTasks(state, tasks) {
+      tasks.forEach(task => {
         vue.set(state.tasks, task.listId, [])
       })
-      tasks.forEach(task=>{
-        state.tasks[task.listId].push(task)     
+      tasks.forEach(task => {
+        state.tasks[task.listId].push(task)
       })
       console.log(tasks)
+    },
+    setComments(state, comments) {
+      comments.forEach(comment => {
+        vue.set(state.comments, comment.taskId, [])
+      })
+      comments.forEach(comment => {
+        state.comments[comment.taskId].push(comment)
+      })
     }
 
   },
   actions: {
     //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts
-//Board Actions
+    //Board Actions
     getBoards({ commit, dispatch }) {
       console.log("GET")
       api('userboards')
@@ -77,7 +86,7 @@ var store = new vuex.Store({
         })
     },
     createBoard({ commit, dispatch }, payload) {
-      
+
       api.post('boards/', payload)
         .then(res => {
           dispatch('getBoards')
@@ -97,7 +106,7 @@ var store = new vuex.Store({
     },
 
     //List Actions
-    addNewList({commit,dispatch}, payload){
+    addNewList({ commit, dispatch }, payload) {
       console.log(payload)
       api.post('lists', payload)
         .then(res => {
@@ -107,46 +116,64 @@ var store = new vuex.Store({
         .catch(err => {
           commit('handleError', err)
         })
-      
+
     },
-    getListsByBoardId({commit, dispatch},boardId){
-      api('boards/' +boardId +'/lists')
-      // console.log(boardId)
+    getListsByBoardId({ commit, dispatch }, boardId) {
+      api('boards/' + boardId + '/lists')
+        // console.log(boardId)
         .then(res => {
           commit('setLists', res.data.data)
         })
-        .catch(err =>{commit('handleError', err)})
+        .catch(err => { commit('handleError', err) })
     },
-    deleteList({commit, dispatch}, list){
+    deleteList({ commit, dispatch }, list) {
       console.log(list)
-      api.delete('lists/'+list._id)
-        .then(res =>{
+      api.delete('lists/' + list._id)
+        .then(res => {
           dispatch('getListsByBoardId', res.data.data.boardId)
         })
         .catch(err => {
           commit('handleError', err)
         })
     },
-    addNewTask({commit,dispatch}, payload){
+    addNewTask({ commit, dispatch }, payload) {
       console.log(payload)
       api.post('tasks', payload)
-        .then(res=>{
-          dispatch('getTasksByListId', {_id: res.data.data.listId, boardId: res.data.data.boardId})
+        .then(res => {
+          dispatch('getTasksByListId', { _id: res.data.data.listId, boardId: res.data.data.boardId })
         })
         .catch(err => {
           commit('handleError', err)
         })
 
     },
-    getTasksByListId({commit, dispatch}, list){
-      debugger
-      api('boards/'+list.boardId+'/lists/' + list._id + '/tasks')
-        .then(res =>{
+    getTasksByListId({ commit, dispatch }, list) {
+      api('boards/' + list.boardId + '/lists/' + list._id + '/tasks')
+        .then(res => {
           commit('setTasks', res.data.data)
         })
         .catch(err => {
           commit('handleError', err)
         })
+    },
+    //Comments on Tasks
+    addComment({ commit, dispatch }, payload) {
+      console.log(payload)
+      api.post('comments', payload)
+      .then(res => {
+        console.log(res)
+        debugger
+          dispatch('getCommentsByTaskId', {_id: res.data.data.taskId, listId: res.data.data.listId, boardId: res.data.data.boardId})
+        })
+    },
+    getCommentsByTaskId({commit, dispatch}, task) {
+      api('boards/' + task.boardId + '/lists/' + task.listId + '/tasks' + task._id + '/comments')
+      .then(res=>{
+        commit('setComments', res.data.data)
+      })
+      .catch(err => {
+        commit('handleError', err)
+      })
     },
 
     //LOGIN AND REGISTER
@@ -159,32 +186,32 @@ var store = new vuex.Store({
         })
         .catch(err => { commit('handleError', err) })
     },
-    register({ commit, dispatch}, payload){
+    register({ commit, dispatch }, payload) {
       auth.post('register', payload)
         .then(res => {
           commit('setUser', res.data.data)
-          router.push({name: 'Boards'})
+          router.push({ name: 'Boards' })
         })
-        .catch((err)=>{
-          { commit('handleError', err)}
+        .catch((err) => {
+          { commit('handleError', err) }
         })
     },
-    authenticate({commit, dispatch}){
+    authenticate({ commit, dispatch }) {
       auth('authenticate')
-        .then(res =>{
+        .then(res => {
           commit('setUser', res.data.data)
-          router.push({name: 'Boards'})
+          router.push({ name: 'Boards' })
         })
-        .catch(()=>{
-          router.push({name: 'Home'})
+        .catch(() => {
+          router.push({ name: 'Home' })
         })
     },
-    logout({commit, dispatch}){
+    logout({ commit, dispatch }) {
       auth.delete('logout')
-        .then((user)=>{
-          user={}
+        .then((user) => {
+          user = {}
           commit('setUser', user)
-          router.push({name: 'Home'})
+          router.push({ name: 'Home' })
         })
     },
 
