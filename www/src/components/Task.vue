@@ -2,9 +2,11 @@
         <div>
             <div class="row task">
                 <div class="col-md-12">
-                    <h1>{{name}}</h1>
+                    <h1>{{task.name}}</h1>
+
                 </div>
             </div>
+
         </div>
     
     </template>
@@ -13,7 +15,7 @@
     
         export default {
             name: 'Task',
-            props: ["name"],
+            props: ["task"],
     
             data() {
                 return {

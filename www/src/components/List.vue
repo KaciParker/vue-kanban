@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <h1>{{list.name}}</h1>
                 <div v-for="task in tasks">
-                    <task :name="task.name"></task>
+                    <task :task="task"></task>
                 </div>
                 <form @submit.prevent="addNewTask">
                     <input type="text" placeholder="Add New Task" v-model="newTask">

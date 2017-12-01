@@ -24,8 +24,8 @@ var store = new vuex.Store({
     error: {},
     user: {},
     lists:[],
-    tasks:{}
-  },
+    tasks:{},
+   },
   mutations: {
     setBoards(state, data) {
       state.boards = data
@@ -45,11 +45,12 @@ var store = new vuex.Store({
     },
     setTasks(state, tasks){
       tasks.forEach(task=>{
-        if(!state.tasks[task.listId]){
-          state.tasks[task.listId] = []
-        }
-        state.tasks[task.listId].push(task)
+        vue.set(state.tasks, task.listId, [])
       })
+      tasks.forEach(task=>{
+        state.tasks[task.listId].push(task)     
+      })
+      console.log(tasks)
     }
 
   },
@@ -76,7 +77,7 @@ var store = new vuex.Store({
         })
     },
     createBoard({ commit, dispatch }, payload) {
-      debugger
+      
       api.post('boards/', payload)
         .then(res => {
           dispatch('getBoards')
