@@ -47,6 +47,7 @@ var store = new vuex.Store({
       state.user = user
     },
     setTasks(state, tasks) {
+      state.tasks={}
       tasks.forEach(task => {
         vue.set(state.tasks, task.listId, [])
       })
@@ -188,6 +189,15 @@ var store = new vuex.Store({
       .then(res=>{
         console.log(res)
         commit('setComments', res.data.data)
+      })
+      .catch(err => {
+        commit('handleError', err)
+      })
+    },
+    updateTask({commit, dispatch}, task){
+      api.put('/tasks/' + task._id, task) 
+      .then(res=>{
+        dispatch('getTasksByListId', {boardId: task.boardId, _id: task.listId})
       })
       .catch(err => {
         commit('handleError', err)

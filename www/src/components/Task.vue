@@ -32,7 +32,18 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <div class="dropup">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Move Task
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <li v-for="list in lists">
+                                    <a :value="list" @click="updateTask(list, activeTask)"data-dismiss="modal">{{list.name}}</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -44,7 +55,7 @@
 </template>
 
 <script>
-
+    import list from './List'
     export default {
         name: 'Task',
         props: ["task"],
@@ -56,6 +67,7 @@
         },
         mounted() {
             this.$store.dispatch('getCommentsByTaskId', this.task)
+           
         },
         methods: {
             createComment() {
@@ -64,6 +76,10 @@
             },
             setActiveTask() {
                 this.$store.dispatch('getTaskbyTaskId', this.task)
+            },
+            updateTask(list, activeTask) {
+                this.activeTask.listId = list._id
+                this.$store.dispatch('updateTask', this.activeTask)
             }
         },
         computed: {
@@ -72,7 +88,13 @@
             },
             activeTask() {
                 return this.$store.state.activeTask
+            },
+            lists(){
+                return this.$store.state.lists
             }
+        },
+        components: {
+            list
         }
 
     }
