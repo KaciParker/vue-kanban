@@ -47,7 +47,6 @@ var store = new vuex.Store({
       state.user = user
     },
     setTasks(state, tasks) {
-      state.tasks={}
       tasks.forEach(task => {
         vue.set(state.tasks, task.listId, [])
       })
@@ -198,6 +197,8 @@ var store = new vuex.Store({
       api.put('/tasks/' + task._id, task) 
       .then(res=>{
         dispatch('getTasksByListId', {boardId: task.boardId, _id: task.listId})
+        dispatch('getTasksByListId', {boardId: task.boardId, _id: task.oldId})
+        task.oldId = ""
       })
       .catch(err => {
         commit('handleError', err)

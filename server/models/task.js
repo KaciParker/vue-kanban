@@ -7,6 +7,7 @@ var schema = new mongoose.Schema({
 	created: { type: Number, default: Date.now() },
 	// Relations
 	listId: { type: ObjectId, ref: models.list, required: true },
+	oldId: { type: ObjectId, ref: models.list},
 	boardId: { type: ObjectId, ref: models.board, required: true },
 });
 

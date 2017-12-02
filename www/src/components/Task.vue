@@ -78,6 +78,7 @@
                 this.$store.dispatch('getTaskbyTaskId', this.task)
             },
             updateTask(list, activeTask) {
+                this.activeTask.oldId = this.activeTask.listId
                 this.activeTask.listId = list._id
                 this.$store.dispatch('updateTask', this.activeTask)
             }
