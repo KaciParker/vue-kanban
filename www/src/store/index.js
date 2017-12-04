@@ -46,17 +46,20 @@ var store = new vuex.Store({
     setUser(state, user) {
       state.user = user
     },
-    setTasks(state, tasks) {
-      tasks.forEach(task => {
-        vue.set(state.tasks, task.listId, [])
+    setTasks(state, payload) {
+      if(payload.tasks.length == 0){
+        vue.set(state.tasks, payload.listId, [])
+      }
+      payload.tasks.forEach(task => {
+        vue.set(state.tasks, payload.listId, [])
       })
-      tasks.forEach(task => {
-        state.tasks[task.listId].push(task)
+      payload.tasks.forEach(task => {
+        state.tasks[payload.listId].push(task)
       })
-      // console.log(tasks)
+      
     },
     setComments(state, comments) {
-      state.comments= {}
+      state.comments = {}
       comments.forEach(comment => {
         vue.set(state.comments, comment.taskId, [])
       })
@@ -64,7 +67,7 @@ var store = new vuex.Store({
         state.comments[comment.taskId].push(comment)
       })
     },
-    setActiveTask(state, task){
+    setActiveTask(state, task) {
       state.activeTask = {}
       state.activeTask = task
     }
@@ -157,7 +160,7 @@ var store = new vuex.Store({
     getTasksByListId({ commit, dispatch }, list) {
       api('boards/' + list.boardId + '/lists/' + list._id + '/tasks')
         .then(res => {
-          commit('setTasks', res.data.data)
+          commit('setTasks', { listId: list._id, tasks: res.data.data })
         })
         .catch(err => {
           commit('handleError', err)
@@ -177,32 +180,33 @@ var store = new vuex.Store({
     addComment({ commit, dispatch }, payload) {
       // console.log(payload)
       api.post('comments', payload)
-      .then(res => {
-        // console.log(res)
-          dispatch('getCommentsByTaskId', {_id: res.data.data.taskId, listId: res.data.data.listId, boardId: payload.boardId})
+        .then(res => {
+          // console.log(res)
+          dispatch('getCommentsByTaskId', { _id: res.data.data.taskId, listId: res.data.data.listId, boardId: payload.boardId })
         })
     },
-    getCommentsByTaskId({commit, dispatch}, task) {
+    getCommentsByTaskId({ commit, dispatch }, task) {
       // console.log(task)
       api('boards/' + task.boardId + '/lists/' + task.listId + '/tasks/' + task._id + '/comments')
-      .then(res=>{
-        console.log(res)
-        commit('setComments', res.data.data)
-      })
-      .catch(err => {
-        commit('handleError', err)
-      })
+        .then(res => {
+          console.log(res)
+          commit('setComments', res.data.data)
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
     },
-    updateTask({commit, dispatch}, task){
-      api.put('/tasks/' + task._id, task) 
-      .then(res=>{
-        dispatch('getTasksByListId', {boardId: task.boardId, _id: task.listId})
-        dispatch('getTasksByListId', {boardId: task.boardId, _id: task.oldId})
-        task.oldId = ""
-      })
-      .catch(err => {
-        commit('handleError', err)
-      })
+    updateTask({ commit, dispatch }, task) {
+      api.put('/tasks/' + task._id, task)
+        .then(res => {
+          dispatch('getTasksByListId', { boardId: task.boardId, _id: task.listId })
+          console.log('you got here')
+          dispatch('getTasksByListId', { boardId: task.boardId, _id: task.oldId })
+          task.oldId = ""
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
     },
 
     //LOGIN AND REGISTER
