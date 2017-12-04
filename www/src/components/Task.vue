@@ -20,7 +20,11 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <h4 v-for="comment in comments">{{comment.comment}}</h4>
+                                <h4 v-for="comment in comments">{{comment.comment}}
+                                    <a href="#">
+                                        <span @click="removeComment(activeTask, comment)" data-dismiss="modal" class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </h4>
                             </div>
                         </div>
                         <div class="form-group">
@@ -40,7 +44,7 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                 <li v-for="list in lists">
-                                    <a :value="list" @click="updateTask(list, activeTask)"data-dismiss="modal">{{list.name}}</a>
+                                    <a :value="list" @click="updateTask(list, activeTask)" data-dismiss="modal">{{list.name}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -67,7 +71,7 @@
         },
         mounted() {
             this.$store.dispatch('getCommentsByTaskId', this.task)
-           
+
         },
         methods: {
             createComment() {
@@ -81,16 +85,19 @@
                 this.activeTask.oldId = this.activeTask.listId
                 this.activeTask.listId = list._id
                 this.$store.dispatch('updateTask', this.activeTask)
+            },
+            removeComment(activeTask, comment){
+                this.$store.dispatch('deleteComment', {task: this.activeTask, comment: comment})
             }
         },
         computed: {
             comments() {
-                return this.$store.state.comments[this.task._id]
+                return this.$store.state.comments[this.activeTask._id]
             },
             activeTask() {
                 return this.$store.state.activeTask
             },
-            lists(){
+            lists() {
                 return this.$store.state.lists
             }
         },

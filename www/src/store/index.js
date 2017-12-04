@@ -58,13 +58,15 @@ var store = new vuex.Store({
       })
       
     },
-    setComments(state, comments) {
-      state.comments = {}
-      comments.forEach(comment => {
-        vue.set(state.comments, comment.taskId, [])
+    setComments(state, payload) {
+      if(payload.comments.length == 0){
+        vue.set(state.comments, payload.taskId, [])
+      }
+      payload.comments.forEach(comment => {
+        vue.set(state.comments, payload.taskId, [])
       })
-      comments.forEach(comment => {
-        state.comments[comment.taskId].push(comment)
+      payload.comments.forEach(comment => {
+        state.comments[payload.taskId].push(comment)
       })
     },
     setActiveTask(state, task) {
@@ -178,20 +180,21 @@ var store = new vuex.Store({
     },
     //Comments on Tasks
     addComment({ commit, dispatch }, payload) {
-      debugger
+      
       // console.log(payload)
       api.post('comments', payload)
         .then(res => {
           console.log(res)
-          dispatch('getCommentsByTaskId', { _id: res.data.data.taskId, listId: payload.listId, boardId: payload.boardId })
+          dispatch('getCommentsByTaskId', { _id: payload.taskId, listId: payload.listId, boardId: payload.boardId })
         })
     },
     getCommentsByTaskId({ commit, dispatch }, task) {
       // console.log(task)
+      debugger
       api('boards/' + task.boardId + '/lists/' + task.listId + '/tasks/' + task._id + '/comments')
         .then(res => {
           console.log(res)
-          commit('setComments', res.data.data)
+          commit('setComments', { taskId: task._id, comments: res.data.data })
         })
         .catch(err => {
           commit('handleError', err)
@@ -203,11 +206,18 @@ var store = new vuex.Store({
           dispatch('getTasksByListId', { boardId: task.boardId, _id: task.listId })
           console.log('you got here')
           dispatch('getTasksByListId', { boardId: task.boardId, _id: task.oldId })
+          
           dispatch('getCommentsByTaskId', task)
           task.oldId = ""
         })
         .catch(err => {
           commit('handleError', err)
+        })
+    },
+    deleteComment({commit, dispatch}, payload){
+      api.delete('/comments/' + payload.comment._id)
+        .then(()=>{
+          dispatch('getCommentsByTaskId', payload.task)
         })
     },
 
