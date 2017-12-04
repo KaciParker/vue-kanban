@@ -30,6 +30,7 @@ var store = new vuex.Store({
   },
   mutations: {
     setBoards(state, data) {
+      debugger
       state.boards = data
     },
     setActiveBoard(state, board) {
@@ -79,7 +80,7 @@ var store = new vuex.Store({
     //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts
     //Board Actions
     getBoards({ commit, dispatch }) {
-      console.log("GET")
+     debugger
       api('userboards')
         .then(res => {
           commit('setBoards', res.data.data)
@@ -108,9 +109,10 @@ var store = new vuex.Store({
         })
     },
     removeBoard({ commit, dispatch }, board) {
+      debugger
       api.delete('boards/' + board._id)
         .then(res => {
-          this.getBoards()
+          dispatch('getBoards')
         })
         .catch(err => {
           commit('handleError', err)
@@ -190,7 +192,7 @@ var store = new vuex.Store({
     },
     getCommentsByTaskId({ commit, dispatch }, task) {
       // console.log(task)
-      debugger
+      
       api('boards/' + task.boardId + '/lists/' + task.listId + '/tasks/' + task._id + '/comments')
         .then(res => {
           console.log(res)
@@ -220,16 +222,26 @@ var store = new vuex.Store({
           dispatch('getCommentsByTaskId', payload.task)
         })
     },
+    deleteTask({commit, dispatch}, task){
+      
+      api.delete('/tasks/' + task._id)
+        .then(() =>{
+          dispatch('getTasksByListId', {boardId: task.boardId, _id: task.listId})
+        })
+    },
 
     //LOGIN AND REGISTER
 
     login({ commit, dispatch }, payload) {
+      debugger
       auth.post('login', payload)
         .then(res => {
           commit('setUser', res.data.data)
           router.push({ name: 'Boards' })
         })
-        .catch(err => { commit('handleError', err) })
+        .catch(err => { commit('handleError', err)
+          router.push({ name: 'login' })
+      })
     },
     register({ commit, dispatch }, payload) {
       auth.post('register', payload)

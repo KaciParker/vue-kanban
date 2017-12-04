@@ -11,10 +11,10 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <router-link :to="{name: 'login'}">
-                            <button class="btn btn-lg btn-primary">Login</button>
+                            <button class="btn btn-lg btn-primary">Start Your Quest</button>
                         </router-link>
                         <router-link :to="{name: 'signUp'}">
-                            <button class="btn btn-lg btn-success">Sign Up</button>
+                            <button class="btn btn-lg btn-success">Join the Fellowship</button>
                         </router-link>
                     </ul>
                 </div>
@@ -26,7 +26,7 @@
             <h1>Hello, world!</h1>
             <p>An interactive kanban website! Create boards, check off todos!</p>
             <router-link :to="{name: 'signUp'}">
-                    <button class="btn btn-lg btn-primary">Create an Account</button>
+                    <button class="btn btn-lg btn-primary">Join the Fellowship</button>
                 </router-link>
         </div>
         <div class="row">

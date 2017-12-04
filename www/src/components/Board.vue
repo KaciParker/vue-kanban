@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <router-link :to="{name: 'Boards'}">
-              <button class="btn btn-success">Home</button>
+              <button class="btn btn-success">The Shire</button>
             </router-link>
           </ul>
         </div>
@@ -24,9 +24,9 @@
       <div class="row">
         <div class="col-md-10">
           <div class="row">
-            <div class="col-md-2" v-for="list in lists">
+            <div class="col-md-2 list-div" v-for="list in lists">
               <list :list="list"></list>
-              <button @click="deleteList(list)">delete list</button>
+              <button class="btn btn-danger" @click="deleteList(list)">Down to the Balrog</button>
 
 
             </div>
@@ -117,6 +117,9 @@
   .navbar-brand {
     font-size: 50px;
     padding-bottom: 1em;
+  }
+  .list-div{
+    margin-left: 50px;
   }
 
   /* .card{

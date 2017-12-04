@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 sign-up">
                     <h2>Sign up for Stay on Track</h2>
-                    <h3 class="text-danger" v-if="error"><b>Passwords do not match</b></h3>
+                    <h3 class="text-danger" v-if="error"><b>YOU SHALL NOT PASS-words don't match</b></h3>
                     <form id="register" class="form" @submit.prevent="submitRegister">
                         <div class="form-group">
                             <label for="email">Email:</label>
@@ -81,7 +81,7 @@
                     this.$store.dispatch('register', this.signUp)
                 } else {
                     this.error = true
-                    console.error({ error: "passwords do not match" })
+                    console.error({ error: "YOU SHALL NOT PASS-words dont match" })
                 }
             }
         },

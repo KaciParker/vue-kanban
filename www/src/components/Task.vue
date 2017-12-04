@@ -2,7 +2,7 @@
     <div>
         <div class="row task">
             <div class="col-md-12">
-                <button @click="setActiveTask" data-toggle="modal" data-target="#myModal" type="button">
+                <button class="task-div" @click="setActiveTask" data-toggle="modal" data-target="#myModal" type="button">
                     <h5>{{task.name}}</h5>
                     <br>
                     <i class="fa fa-comment-o"></i>
@@ -15,15 +15,15 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Add Comment</h4>
+                        <h2 class="modal-title">{{activeTask.name}}</h2>
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-12">
-                                <h4 v-for="comment in comments">{{comment.comment}}
-                                    <a href="#">
-                                        <span @click="removeComment(activeTask, comment)" data-dismiss="modal" class="glyphicon glyphicon-trash"></span>
-                                    </a>
+                            <div class="col-md-12 ">
+                                <h4 class="well" v-for="comment in comments">{{comment.comment}}<br>
+                                    
+                                        <button class="btn btn-warning btn-xs" @click="removeComment(activeTask, comment)">Golem's Hungry. Feed Him!</button>
+                                    
                                 </h4>
                             </div>
                         </div>
@@ -32,16 +32,17 @@
                             <input type="text" name="comment" class="form-control" placeholder="Your comment here..." required v-model="newComment">
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-success" @click="createComment">Submit</button>
+                            <button class="btn btn-success" @click="createComment">Add To Inventory</button>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <div class="dropup">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                            <button class="btn btn-default dropdown-toggle pull-left" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                                Move Task
+                                Fly (to new list) You Fools!
                                 <span class="caret"></span>
                             </button>
+                            <button @click="removeTask(activeTask)"class="btn btn-danger pull-right" type="button" data-dismiss="modal">Drop Item </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                 <li v-for="list in lists">
                                     <a :value="list" @click="updateTask(list, activeTask)" data-dismiss="modal">{{list.name}}</a>
@@ -88,6 +89,9 @@
             },
             removeComment(activeTask, comment){
                 this.$store.dispatch('deleteComment', {task: this.activeTask, comment: comment})
+            },
+            removeTask(activeTask){
+                this.$store.dispatch('deleteTask', activeTask)
             }
         },
         computed: {
@@ -120,6 +124,11 @@
     .navbar-brand {
         font-size: 50px;
         padding-bottom: 1em;
+    }
+    .task-div{
+        width: 100%;
+        height: 7em;
+        margin-bottom: 10px;
     }
 
     /* .card{

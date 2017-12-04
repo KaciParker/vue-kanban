@@ -2,8 +2,8 @@
     <div>
         <div class="row list">
             <div class="col-md-12 well">
-                <h1>{{list.name}}</h1>
-                <div v-for="task in tasks">
+                <h3>{{list.name}}</h3>
+                <div  v-for="task in tasks">
                     <task :task="task"></task>
                 </div>
                 <form @submit.prevent="addNewTask">
@@ -63,7 +63,9 @@
         font-size: 50px;
         padding-bottom: 1em;
     }
-
+    .task-div{
+        width: 100%;
+    }
     /* .card{
           border:1px solid black;
         } */
