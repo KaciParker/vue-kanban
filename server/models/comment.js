@@ -6,7 +6,8 @@ var schema = new mongoose.Schema({
 	comment: { type: String, required: true },
 	created: { type: Number, default: Date.now() },
 	// Relations
-    listId: { type: ObjectId, ref: models.list, required: true },
+	
+	
     taskId: { type: ObjectId, ref: models.task, required: true }
 });
 
