@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="col-md-2">
-          <button class="btn btn-primary btn-lg" @click="toggleInput">Add New List</button>
+          <button class="btn btn-primary btn-lg" @click="toggleInput">Add New Waypoint</button>
           <div class="card" v-if="input">
             <input type="text" placeholder="List Name" v-model="list">
             <button @click="addNewList" class="btn btn-success btn-sm">Submit</button>
