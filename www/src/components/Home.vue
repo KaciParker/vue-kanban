@@ -1,10 +1,11 @@
 <template>
-    <div>
-        <nav class="navbar navbar-default">
+    <div class="home">
+        <nav class="navbar">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <h1 class="navbar-brand" href="#">Rule Them All</h1>
+                    <h1 class="navbar-brand">Rule Them All </h1>
+                    <img class="navbar-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Unico_Anello.png/1200px-Unico_Anello.png">
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -22,12 +23,12 @@
             </div>
             <!-- /.container-fluid -->
         </nav>
-        <div class="jumbotron">
+        <div class="jumbotron hobbit">
             <h1>Hello, world!</h1>
             <p>An interactive kanban website! Create boards, check off todos!</p>
             <router-link :to="{name: 'signUp'}">
-                    <button class="btn btn-lg btn-primary">Join the Fellowship</button>
-                </router-link>
+                <button class="btn btn-lg btn-primary">Join the Fellowship</button>
+            </router-link>
         </div>
         <div class="row">
             <div class="col-md-3 col-md-offset-1 well screenshot">
@@ -88,19 +89,42 @@
 </script>
 
 <style scoped>
+    .home{
+        background-color: rgba(0, 0, 0, 0.897);
+        height:100%;
+    }
+    .hobbit{
+        background-image: url('http://www.bsdesigns.info/wp-content/uploads/2017/03/Luxury-hobbit-homes-X12D.jpg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center;
+        
+    }
     .nav button {
         margin-top: 3rem;
     }
+
+    .navbar {
+        background-color: rgba(0, 0, 0, 0.644);
+        color: rgba(241, 209, 105, 1);
+    }
+
+    .navbar-image {
+        margin-top: 1em;
+        margin-left: 3em;
+        width: 75px;
+    }
+
     .screenshot {
         margin-right: 6em;
     }
+
     .navbar-header {
         padding-left: 40rem;
     }
+
     .navbar-brand {
         font-size: 50px;
         padding-bottom: 1em;
     }
-
-    
 </style>

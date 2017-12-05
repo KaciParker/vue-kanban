@@ -20,7 +20,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12 ">
-                                <h4 class="well" v-for="comment in comments">{{comment.comment}}<br>
+                                <h4 class="well comment-well" v-for="comment in comments">{{comment.comment}}<br>
                                     
                                         <button class="btn btn-warning btn-xs" @click="removeComment(activeTask, comment)">Golem's Hungry. Feed Him!</button>
                                     
@@ -129,6 +129,20 @@
         width: 100%;
         height: 7em;
         margin-bottom: 10px;
+    }
+    .modal .modal-dialog .modal-content{
+        background-color: rgba(236, 196, 75, 0.897);
+    }
+    .comment-well{
+        background-color: rgba(0, 0, 0, 0.609);
+        border-color:rgba(236, 196, 75, 0.897);
+        color:whitesmoke;
+    }
+    .comment-well button{
+        margin-top:10px;
+    }
+    .comment-well input{
+        background-color:rgba(0, 0, 0, 0.609);
     }
 
     /* .card{

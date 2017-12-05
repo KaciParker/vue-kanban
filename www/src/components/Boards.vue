@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <nav class="navbar navbar-default">
+  <div class="boards">
+    <nav class="navbar ">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <h1 class="navbar-brand" href="#">Rule Them All</h1>
+          <h1 class="navbar-brand">Rule Them All </h1><img class="navbar-image"src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Unico_Anello.png/1200px-Unico_Anello.png">
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -27,7 +27,7 @@
     <div class="row">
       <div v-for="board in boards" class="col-md-3 board-btn">
         <router-link :to="'/boards/'+board._id">
-          <div style="background-image: url('https://images3.alphacoders.com/161/161177.jpg')" class="thumbnail">
+          <div class="thumbnail">
             <!-- <img src="//placehold.it/100x100"> -->
             <div class="caption">
               <h3>{{board.name}}</h3>
@@ -118,10 +118,23 @@
 </script>
 
 <style scoped>
+  .boards{
+    background-image: url('https://images3.alphacoders.com/161/161177.jpg');
+    height:100vh;
+    /* background-color: black; */
+  }
   .nav button {
     margin-top: 3rem;
   }
-
+  .navbar{
+    background-color: rgba(0, 0, 0, 0.644);
+    color:  rgba(241, 209, 105, 1);
+  }
+  .navbar-image{
+    margin-top: 1em;
+    margin-left: 3em;
+    width: 75px;
+  }
   .navbar-header {
     padding-left: 40rem;
   }
@@ -131,9 +144,11 @@
     padding-bottom: 1em;
   }
   .thumbnail {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.527);
+    border-color:  rgba(241, 209, 105, 1);
+  }
+  .caption{
+    color: rgba(241, 209, 105, 1);
   }
   .delete-btn{
     display: none

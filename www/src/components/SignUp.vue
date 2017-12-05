@@ -1,17 +1,17 @@
 <template>
-    <div>
-        <nav class="navbar navbar-default">
+    <div class="register-page">
+        <nav class="navbar">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <h1 class="navbar-brand" href="#">Rule Them All</h1>
-                </div>
+                        <h1 class="navbar-brand">Rule Them All </h1><img class="navbar-image"src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Unico_Anello.png/1200px-Unico_Anello.png">
+                      </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <router-link :to="{name: 'Home'}">
-                            <button class="btn btn-lg btn-success">Home</button>
+                            <button class="btn btn-lg btn-success">The Shire</button>
                         </router-link>
                     </ul>
                 </div>
@@ -22,7 +22,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 sign-up">
-                    <h2>Sign up for Stay on Track</h2>
+                    <h2>Join the Fellowship to Rule Them All</h2>
                     <h3 class="text-danger" v-if="error"><b>YOU SHALL NOT PASS-words don't match</b></h3>
                     <form id="register" class="form" @submit.prevent="submitRegister">
                         <div class="form-group">
@@ -92,6 +92,12 @@
 </script>
 
 <style scoped>
+    .register-page{
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdGKKvILgnneTo2FivZ1Ib4VQ0Z-eWq3n3RinjX-p4MqoLwtBg');
+        background-repeat: no-repeat;
+        background-size:cover;
+        height: 100vh;
+    }
     .sign-up {
         border: 2px ridge rgba(0, 0, 0, 0.301);
         border-radius: 30px;
@@ -101,6 +107,15 @@
     .nav button {
         margin-top: 3rem;
     }
+    .navbar{
+    background-color: rgba(0, 0, 0, 0.644);
+    color:  rgba(241, 209, 105, 1);
+  }
+  .navbar-image{
+    margin-top: 1em;
+    margin-left: 3em;
+    width: 75px;
+  }
     .navbar-header {
         padding-left: 40rem;
     }

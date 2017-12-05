@@ -1,18 +1,18 @@
 <template>
-  <div>
+  <div class="board">
     <!-- Active Board: {{board}} -->
-    <nav class="navbar navbar-default">
+    <nav class="navbar">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <h1 class="navbar-brand" href="#">Rule Them All</h1>
-        </div>
+            <h1 class="navbar-brand">Rule Them All </h1><img class="navbar-image"src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Unico_Anello.png/1200px-Unico_Anello.png">
+          </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <router-link :to="{name: 'Boards'}">
-              <button class="btn btn-success">The Shire</button>
+              <button class="btn btn-success">Rivendale</button>
             </router-link>
           </ul>
         </div>
@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="col-md-2">
-          <button class="btn btn-primary btn-lg" @click="toggleInput">Add New Waypoint</button>
+          <button class="btn btn-primary btn" @click="toggleInput">Add New Waypoint</button>
           <div class="card" v-if="input">
             <input type="text" placeholder="List Name" v-model="list">
             <button @click="addNewList" class="btn btn-success btn-sm">Submit</button>
@@ -106,12 +106,26 @@
 </script>
 
 <style scoped>
+  .board{
+    background-image: url('https://wallpapercave.com/wp/FOpS8au.jpg');
+    height:100vh;
+    background-position: center;
+  }
   .nav button {
     margin-top: 3rem;
   }
 
   .navbar-header {
     padding-left: 40rem;
+  }
+  .navbar{
+    background-color: rgba(0, 0, 0, 0.644);
+    color:  rgba(241, 209, 105, 1);
+  }
+  .navbar-image{
+    margin-top: 1em;
+    margin-left: 3em;
+    width: 75px;
   }
 
   .navbar-brand {
