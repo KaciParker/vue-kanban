@@ -12,10 +12,10 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <router-link :to="{name: 'login'}">
-                            <button class="btn btn-lg btn-primary">Start Your Quest</button>
+                            <button class="btn btn-lg btn-start">Start Your Quest</button>
                         </router-link>
                         <router-link :to="{name: 'signUp'}">
-                            <button class="btn btn-lg btn-success">Join the Fellowship</button>
+                            <button class="btn btn-lg btn-register btn-success">Join the Fellowship</button>
                         </router-link>
                     </ul>
                 </div>
@@ -24,10 +24,10 @@
             <!-- /.container-fluid -->
         </nav>
         <div class="jumbotron hobbit">
-            <h1>Hello, world!</h1>
+            <h1>Welcome Hobits, Elves, Dwarves, and Men</h1>
             <p>An interactive kanban website! Create boards, check off todos!</p>
             <router-link :to="{name: 'signUp'}">
-                <button class="btn btn-lg btn-primary">Join the Fellowship</button>
+                <button class="btn btn-lg btn-reg btn-success">Join the Fellowship</button>
             </router-link>
         </div>
         <div class="row">
@@ -99,6 +99,19 @@
         background-size: 100%;
         background-position: center;
         
+    }
+    .btn-start{
+        background-color:rgba(241, 209, 105, 1);
+        color: black;
+    }
+    .btn-start:hover{
+        box-shadow: 0px 0px 30px white;
+    }
+    .btn-register:hover{
+        box-shadow: 0px 0px 30px white;
+    }
+    .btn-reg:hover{
+        box-shadow: 0px 0px 30px black;
     }
     .nav button {
         margin-top: 3rem;

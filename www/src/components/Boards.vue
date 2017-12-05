@@ -4,13 +4,14 @@
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <h1 class="navbar-brand">Rule Them All </h1><img class="navbar-image"src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Unico_Anello.png/1200px-Unico_Anello.png">
+          <h1 class="navbar-brand">Rule Them All </h1>
+          <img class="navbar-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Unico_Anello.png/1200px-Unico_Anello.png">
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <button class="btn btn-warning btn-lg" @click="logout">Quest Complete</button>
+            <button class="btn btn-warning btn-logout btn-lg" @click="logout">Quest Complete</button>
           </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -19,12 +20,12 @@
     </nav>
     <div class="row">
       <div class="col-md-2 col-md-offset-10">
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+        <button type="button" class="btn btn-forge" data-toggle="modal" data-target="#myModal">
           <span class="glyphicon glyphicon-plus-sign"></span> FORGE NEW BOARD</button>
       </div>
     </div>
     <!-- BOARD THUMBNAILS -->
-    <div class="row">
+    <div class="row boards-row">
       <div v-for="board in boards" class="col-md-3 board-btn">
         <router-link :to="'/boards/'+board._id">
           <div class="thumbnail">
@@ -35,9 +36,9 @@
           </div>
         </router-link>
         <!-- REMOVE BUTTON -->
-        
-          <button @click="removeBoard(board)" class="btn btn-danger delete-btn">Cast into Mt. Doom</button>
-        
+
+        <button @click="removeBoard(board)" class="btn btn-danger delete-btn">Cast into Mt. Doom</button>
+
         <!-- <span @click="removeBoard(board)">x</span> -->
       </div>
     </div>
@@ -54,17 +55,17 @@
           </div>
           <div class="modal-body">
             <!-- <form class="form" @submit.prevent="createBoard"> -->
-              <div class="form-group">
-                <label for="name">Board Name:</label>
-                <input type="text" name="name" class="form-control" placeholder="board name" required v-model="board.name">
-              </div>
-              <div class="form-group">
-                <label for="description">Description:</label>
-                <input type="text" name="description" class="form-control" placeholder="what's this board for?" required v-model="board.description">
-              </div>
-              <div class="form-group">
-                <button class="btn btn-success" data-dismiss="modal" @click="createBoard">Add Your New Board!</button>
-              </div>
+            <div class="form-group">
+              <label for="name">Board Name:</label>
+              <input type="text" name="name" class="form-control" placeholder="board name" required v-model="board.name">
+            </div>
+            <div class="form-group">
+              <label for="description">Description:</label>
+              <input type="text" name="description" class="form-control" placeholder="what's this board for?" required v-model="board.description">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-success" data-dismiss="modal" @click="createBoard">Add Your New Board!</button>
+            </div>
             <!-- </form> -->
           </div>
           <div class="modal-footer">
@@ -118,23 +119,37 @@
 </script>
 
 <style scoped>
-  .boards{
+  .boards {
     background-image: url('https://images3.alphacoders.com/161/161177.jpg');
-    height:100vh;
+    height: 100vh;
     /* background-color: black; */
   }
+  .btn-logout:hover{
+    box-shadow: 0px 0px 30px white;
+  }
+  .btn-forge{
+    background-color: black;
+    color:whitesmoke;
+  }
+  .btn-forge:hover{
+    box-shadow: 0px 0px 30px white;
+  }
+  
   .nav button {
     margin-top: 3rem;
   }
-  .navbar{
+
+  .navbar {
     background-color: rgba(0, 0, 0, 0.644);
-    color:  rgba(241, 209, 105, 1);
+    color: rgba(241, 209, 105, 1);
   }
-  .navbar-image{
+
+  .navbar-image {
     margin-top: 1em;
     margin-left: 3em;
     width: 75px;
   }
+
   .navbar-header {
     padding-left: 40rem;
   }
@@ -143,18 +158,33 @@
     font-size: 50px;
     padding-bottom: 1em;
   }
-  .thumbnail {
-    background-color: rgba(0, 0, 0, 0.527);
-    border-color:  rgba(241, 209, 105, 1);
-  }
-  .caption{
-    color: rgba(241, 209, 105, 1);
-  }
-  .delete-btn{
-    display: none
-  }
-  .board-btn:hover .delete-btn{
-    display:inline-block
+  .boards-row{
+    margin-top: 10px;
   }
 
+  .modal .modal-dialog .modal-content {
+    background-color: rgba(236, 196, 75, 0.897);
+  }
+
+  input[type=text] {
+    background-color: rgba(0, 0, 0, 0.609);
+    color: whitesmoke;
+  }
+
+  .thumbnail {
+    background-color: rgba(0, 0, 0, 0.527);
+    border-color: rgba(241, 209, 105, 1);
+  }
+  .thumbnail:hover{
+    box-shadow: 0px 0px 30px white;
+  }
+  .caption {
+    color: rgba(241, 209, 105, 1);
+  }
+  .delete-btn {
+    display: none
+  }
+  .board-btn:hover .delete-btn {
+    display: inline-block
+  }
 </style>

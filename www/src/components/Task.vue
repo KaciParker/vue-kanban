@@ -37,7 +37,7 @@
                     </div>
                     <div class="modal-footer">
                         <div class="dropup">
-                            <button class="btn btn-default dropdown-toggle pull-left" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                            <button class="btn move-btn dropdown-toggle pull-left " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 Fly (to new list) You Fools!
                                 <span class="caret"></span>
@@ -141,8 +141,23 @@
     .comment-well button{
         margin-top:10px;
     }
-    .comment-well input{
+    input[type=text]{
         background-color:rgba(0, 0, 0, 0.609);
+        color: whitesmoke;
+    }
+    .move-btn{
+        background-color: rgba(0, 0, 0, 0.609);
+        color:whitesmoke;
+    }
+    .dropdown-menu{
+        background-color: rgba(0, 0, 0, 0.609);
+    }
+    .dropdown-menu a{
+        color:whitesmoke;
+    }
+    .dropdown-menu a:hover{
+        background-color: rgba(236, 196, 75, 0.897);
+        color:black;
     }
 
     /* .card{

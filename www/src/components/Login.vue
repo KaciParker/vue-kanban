@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <router-link :to="{name: 'Home'}">
-                            <button class="btn btn-lg btn-success">The Shire</button>
+                            <button class="btn btn-lg btn-shire btn-success">The Shire</button>
                         </router-link>
                     </ul>
                 </div>
@@ -36,7 +36,7 @@
                             <input type="password" name="password" class="form-control" placeholder="password" required v-model='login.password'>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-success" type="submit">Start Your Quest!</button>
+                            <button class="btn btn-submit btn-success" type="submit">Start Your Quest!</button>
                         </div>
                     </form>
                     <h3>Don't have an account?
@@ -93,7 +93,12 @@
         background-color: rgba(0, 0, 0, 0.301);
         color: white;
     }
-
+    .btn-shire:hover{
+        box-shadow: 0px 0px 30px white
+    }
+    .btn-submit:hover{
+        box-shadow: 0px 0px 30px white
+    }
     .navbar {
         background-color: rgba(0, 0, 0, 0.644);
         color: rgba(241, 209, 105, 1);
