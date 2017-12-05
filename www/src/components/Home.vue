@@ -24,7 +24,7 @@
             <!-- /.container-fluid -->
         </nav>
         <div class="jumbotron hobbit">
-            <h1>Welcome Hobits, Elves, Dwarves, and Men</h1>
+            <h1>Welcome Hobbits, Elves, Dwarves, and Men</h1>
             <p>An interactive kanban website! Create boards, check off todos!</p>
             <router-link :to="{name: 'signUp'}">
                 <button class="btn btn-lg btn-reg btn-success">Join the Fellowship</button>
