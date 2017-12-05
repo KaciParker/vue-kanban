@@ -98,6 +98,9 @@
         background-repeat: no-repeat;
         background-size: 100%;
         background-position: center;
+        color: white;
+        font-family: 'Macondo Swash Caps', cursive;
+
         
     }
     .btn-start{
@@ -139,5 +142,6 @@
     .navbar-brand {
         font-size: 50px;
         padding-bottom: 1em;
+        font-family: 'Kaushan Script', cursive;
     }
 </style>

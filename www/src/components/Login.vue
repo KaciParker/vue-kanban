@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <h1 class="navbar-brand">Rule Them All </h1>
+                    <h1 class="navbar-brand nav-font">Rule Them All </h1>
                     <img class="navbar-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Unico_Anello.png/1200px-Unico_Anello.png">
                 </div>
 
@@ -121,5 +121,7 @@
     .navbar-brand {
         font-size: 50px;
         padding-bottom: 1em;
+        font-family: 'Lobster', cursive;
     }
+   
 </style>
