@@ -22,9 +22,11 @@
     </nav>
     <div class="contatiner-fluid">
       <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-10 info-text">
+          <h1>{{board.name}}</h1>
+          <h4>{{board.description}}</h4>
           <div class="row">
-            <div droppable="true" v-on:drop.capture="" ondragover="event.preventDefault()" class="col-md-2 list-div" v-for="list in lists">
+            <div class="col-md-2 list-div" v-for="list in lists">
               <list :list="list"></list>
               <button class="btn btn-danger" @click="deleteList(list)">Down to the Balrog</button>
 
@@ -80,9 +82,9 @@
       lists() {
         return this.$store.state.lists
       },
-      // tasks(){
-      //   return this.$store.state.tasks
-      // }
+      activeTask(){
+        return this.$store.state.activeTask
+      }
     },
     methods: {
       addNewList() {
@@ -97,10 +99,14 @@
         console.log(list)
         this.$store.dispatch('deleteList', list)
       },
-      // addNewTask(){
-      //   this.$store.dispatch('addNewTask',{ name: this.task, listId: this.list._id})
-      //   this.task=''
-      // }
+      // updateTask() {
+      //   var activeTask= this.activeTask
+      //   var list = this.lists[this.list]
+      //   debugger
+      //           activeTask.oldId = activeTask.listId
+      //           activeTask.listId = list._id
+      //           this.$store.dispatch('updateTask', activeTask)
+      //       },
     }
   }
 </script>
@@ -136,6 +142,9 @@
   .list-div{
     margin-left: 50px;
   }
+  .info-text {
+        font-family: 'Macondo Swash Caps', cursive;
+    }
 
   /* .card{
     border:1px solid black;

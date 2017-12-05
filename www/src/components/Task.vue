@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row task">
-            <div class="col-md-12">
+            <div draggable="true" v-on:dragstart.capture="moving" class="col-md-12">
                 <button class="task-div" @click="setActiveTask" data-toggle="modal" data-target="#myModal" type="button">
                     <h5>{{task.name}}</h5>
                     <br>
@@ -75,6 +75,10 @@
 
         },
         methods: {
+            moving(event) {
+                event.dataTransfer.setData('text/javascript', JSON.stringify(this.task))
+                this.$store.dispatch('getTaskbyTaskId', this.task)
+            },
             createComment() {
                 this.$store.dispatch('addComment', { comment: this.newComment, boardId: this.activeTask.boardId, listId: this.activeTask.listId, taskId: this.activeTask._id })
                 this.newComment = ''

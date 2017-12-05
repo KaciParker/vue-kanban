@@ -30,7 +30,7 @@
         <router-link :to="'/boards/'+board._id" class="board">
           <div class="thumbnail">
             <!-- <img src="//placehold.it/100x100"> -->
-            <div class="caption">
+            <div class="caption info-text">
               <h3>{{board.name}}</h3>
             </div>
           </div>
@@ -191,4 +191,7 @@
   .board:hover{
     text-decoration: none;
   }
+  .info-text {
+        font-family: 'Macondo Swash Caps', cursive;
+    }
 </style>

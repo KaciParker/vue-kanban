@@ -203,6 +203,7 @@ var store = new vuex.Store({
         })
     },
     updateTask({ commit, dispatch }, task) {
+      debugger
       api.put('/tasks/' + task._id, task)
         .then(res => {
           dispatch('getTasksByListId', { boardId: task.boardId, _id: task.listId })

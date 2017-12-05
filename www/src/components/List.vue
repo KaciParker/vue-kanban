@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="row list">
-            <div class="col-md-12 well">
+            <div droppable="true" v-on:drop.capture="updateTask" ondragover="event.preventDefault()" class="col-md-12 well">
                 <h3>{{list.name}}</h3>
-                <div  draggable="true" v-for="task in tasks" v-on:dragstart.capture="moving">
+                <div v-for="task in tasks">
                     <task :task="task"></task>
                 </div>
                 <form @submit.prevent="addNewTask">
@@ -23,31 +23,40 @@
 
         data() {
             return {
-                newTask:''
+                newTask: ''
             }
         },
-        
+
         components: {
             task,
-            
+
         },
-        mounted(){
+        mounted() {
             this.$store.dispatch('getTasksByListId', this.list)
         },
         computed: {
             tasks() {
                 return this.$store.state.tasks[this.list._id]
             },
-           
+            activeTask(){
+                return this.$store.state.activeTask
+            }
+
         },
         methods: {
-            moving(event){
-                event.dataTransfer.setData('text/javascript', JSON.stringify(this.task))
-            },
+           
             addNewTask() {
                 this.$store.dispatch('addNewTask', { name: this.newTask, listId: this.list._id, boardId: this.list.boardId })
                 this.newTask = ''
-            }
+            },
+            updateTask() {
+                var activeTask = this.activeTask
+                var list = this.list
+                debugger
+                activeTask.oldId = activeTask.listId
+                activeTask.listId = list._id
+                this.$store.dispatch('updateTask', activeTask)
+            },
         }
 
     }
@@ -67,9 +76,11 @@
         padding-bottom: 1em;
         font-family: 'Great Vibes', cursive;
     }
-    .task-div{
+
+    .task-div {
         width: 100%;
     }
+
     /* .card{
           border:1px solid black;
         } */
