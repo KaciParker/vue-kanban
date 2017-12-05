@@ -1,0 +1,362 @@
+
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  /* margin-top: 60px; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.boards[data-v-0c6e3af6] {
+  background-image: url('https://images3.alphacoders.com/161/161177.jpg');
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-color: black; */
+}
+.btn-logout[data-v-0c6e3af6]:hover{
+  box-shadow: 0px 0px 30px white;
+}
+.btn-forge[data-v-0c6e3af6]{
+  background-color: black;
+  color:whitesmoke;
+}
+.btn-forge[data-v-0c6e3af6]:hover{
+  box-shadow: 0px 0px 30px white;
+}
+.nav button[data-v-0c6e3af6] {
+  margin-top: 3rem;
+}
+.navbar[data-v-0c6e3af6] {
+  background-color: rgba(0, 0, 0, 0.644);
+  color: rgba(241, 209, 105, 1);
+}
+.navbar-image[data-v-0c6e3af6] {
+  margin-top: 1em;
+  margin-left: 3em;
+  width: 75px;
+}
+.navbar-header[data-v-0c6e3af6] {
+  padding-left: 40rem;
+}
+.navbar-brand[data-v-0c6e3af6] {
+  font-size: 50px;
+  padding-bottom: 1em;
+  font-family: 'Great Vibes', cursive;
+}
+.boards-row[data-v-0c6e3af6]{
+  margin-top: 10px;
+}
+.modal .modal-dialog .modal-content[data-v-0c6e3af6] {
+  background-color: rgba(236, 196, 75, 0.897);
+}
+input[type=text][data-v-0c6e3af6] {
+  background-color: rgba(0, 0, 0, 0.609);
+  color: whitesmoke;
+}
+.thumbnail[data-v-0c6e3af6] {
+  background-color: rgba(0, 0, 0, 0.527);
+  border-color: rgba(241, 209, 105, 1);
+}
+.thumbnail[data-v-0c6e3af6]:hover{
+  box-shadow: 0px 0px 30px white;
+}
+.caption[data-v-0c6e3af6] {
+  color: rgba(241, 209, 105, 1);
+}
+.delete-btn[data-v-0c6e3af6] {
+  display: none
+}
+.board-btn:hover .delete-btn[data-v-0c6e3af6] {
+  display: inline-block
+}
+.board[data-v-0c6e3af6]:hover{
+  text-decoration: none;
+}
+.info-text[data-v-0c6e3af6] {
+      font-family: 'Macondo Swash Caps', cursive;
+}
+
+.board[data-v-5337eb44]{
+  background-image: url('https://wallpapercave.com/wp/FOpS8au.jpg');
+  height:100vh;
+  background-position: center;
+}
+.nav button[data-v-5337eb44] {
+  margin-top: 3rem;
+}
+.navbar-header[data-v-5337eb44] {
+  padding-left: 40rem;
+}
+.navbar[data-v-5337eb44]{
+  background-color: rgba(0, 0, 0, 0.644);
+  color:  rgba(241, 209, 105, 1);
+}
+.navbar-image[data-v-5337eb44]{
+  margin-top: 1em;
+  margin-left: 3em;
+  width: 75px;
+}
+.navbar-brand[data-v-5337eb44] {
+  font-size: 50px;
+  padding-bottom: 1em;
+  font-family: 'Great Vibes', cursive;
+}
+.list-div[data-v-5337eb44]{
+  margin-left: 50px;
+}
+.info-text[data-v-5337eb44] {
+      font-family: 'Macondo Swash Caps', cursive;
+}
+
+/* .card{
+  border:1px solid black;
+} */
+
+.nav button[data-v-32eec754] {
+    margin-top: 3rem;
+}
+.navbar-header[data-v-32eec754] {
+    padding-left: 40rem;
+}
+.navbar-brand[data-v-32eec754] {
+    font-size: 50px;
+    padding-bottom: 1em;
+    font-family: 'Great Vibes', cursive;
+}
+.task-div[data-v-32eec754] {
+    width: 100%;
+}
+
+/* .card{
+      border:1px solid black;
+    } */
+
+.nav button[data-v-7de155bd] {
+    margin-top: 3rem;
+}
+.navbar-header[data-v-7de155bd] {
+    padding-left: 40rem;
+}
+.navbar-brand[data-v-7de155bd] {
+    font-size: 50px;
+    padding-bottom: 1em;
+    font-family: 'Great Vibes', cursive;
+}
+.task-div[data-v-7de155bd]{
+    width: 100%;
+    height: 10em;
+    margin-bottom: 10px;
+}
+.modal .modal-dialog .modal-content[data-v-7de155bd]{
+    background-color: rgba(236, 196, 75, 0.897);
+}
+.comment-well[data-v-7de155bd]{
+    background-color: rgba(0, 0, 0, 0.609);
+    border-color:rgba(236, 196, 75, 0.897);
+    color:whitesmoke;
+}
+.comment-well button[data-v-7de155bd]{
+    margin-top:10px;
+}
+input[type=text][data-v-7de155bd]{
+    background-color:rgba(0, 0, 0, 0.609);
+    color: whitesmoke;
+}
+.move-btn[data-v-7de155bd]{
+    background-color: rgba(0, 0, 0, 0.609);
+    color:whitesmoke;
+}
+.dropdown-menu[data-v-7de155bd]{
+    background-color: rgba(0, 0, 0, 0.609);
+}
+.dropdown-menu a[data-v-7de155bd]{
+    color:whitesmoke;
+}
+.dropdown-menu a[data-v-7de155bd]:hover{
+    background-color: rgba(236, 196, 75, 0.897);
+    color:black;
+}
+
+/* .card{
+          border:1px solid black;
+        } */
+
+.login-page[data-v-60b1dd3e]{
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdGKKvILgnneTo2FivZ1Ib4VQ0Z-eWq3n3RinjX-p4MqoLwtBg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    height: 100vh;
+}
+.login[data-v-60b1dd3e] {
+    border: 2px ridge rgba(0, 0, 0, 0.301);
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.301);
+    color: white;
+}
+.btn-shire[data-v-60b1dd3e]:hover{
+    box-shadow: 0px 0px 30px white
+}
+.btn-submit[data-v-60b1dd3e]:hover{
+    box-shadow: 0px 0px 30px white
+}
+.navbar[data-v-60b1dd3e] {
+    background-color: rgba(0, 0, 0, 0.644);
+    color: rgba(241, 209, 105, 1);
+}
+.navbar-image[data-v-60b1dd3e] {
+    margin-top: 1em;
+    margin-left: 3em;
+    width: 75px;
+}
+.nav button[data-v-60b1dd3e] {
+    margin-top: 3rem;
+}
+.navbar-header[data-v-60b1dd3e] {
+    padding-left: 40rem;
+}
+.navbar-brand[data-v-60b1dd3e] {
+    font-size: 50px;
+    padding-bottom: 1em;
+    font-family: 'Great Vibes', cursive;
+}
+.register[data-v-60b1dd3e]:hover{
+    text-decoration: none;
+    color: rgba(241, 209, 105, 1);
+    text-shadow: 0px 0px 1px white;
+    font-size: 30px;
+}
+.info-text[data-v-60b1dd3e] {
+    font-family: 'Macondo Swash Caps', cursive;
+}
+
+
+.register-page[data-v-3af9f3f0]{
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdGKKvILgnneTo2FivZ1Ib4VQ0Z-eWq3n3RinjX-p4MqoLwtBg');
+      background-repeat: no-repeat;
+      background-size:cover;
+      height: 100vh;
+}
+.sign-up[data-v-3af9f3f0] {
+      border: 2px ridge rgba(0, 0, 0, 0.301);
+      border-radius: 30px;
+      background-color: rgba(0, 0, 0, 0.301);
+      color: white;
+}
+.btn-shire[data-v-3af9f3f0]:hover{
+      box-shadow: 0px 0px 30px white
+}
+.btn-submit[data-v-3af9f3f0]:hover{
+      box-shadow: 0px 0px 30px white
+}
+.nav button[data-v-3af9f3f0] {
+      margin-top: 3rem;
+}
+.navbar[data-v-3af9f3f0]{
+  background-color: rgba(0, 0, 0, 0.644);
+  color:  rgba(241, 209, 105, 1);
+}
+.navbar-image[data-v-3af9f3f0]{
+  margin-top: 1em;
+  margin-left: 3em;
+  width: 75px;
+}
+.navbar-header[data-v-3af9f3f0] {
+      padding-left: 40rem;
+}
+.navbar-brand[data-v-3af9f3f0] {
+      font-size: 50px;
+      padding-bottom: 1em;
+      font-family: 'Great Vibes', cursive;
+}
+.text-danger[data-v-3af9f3f0]{
+      text-shadow: 0px 0px 5px white;
+}
+.login[data-v-3af9f3f0]:hover{
+      text-decoration: none;
+      color: rgba(241, 209, 105, 1);
+      text-shadow: 0px 0px 1px white;
+      font-size: 20px;
+}
+.info-text[data-v-3af9f3f0] {
+      font-family: 'Macondo Swash Caps', cursive;
+}
+
+  
+
+.home[data-v-7958d817] {
+    background-color: rgba(0, 0, 0, 0.897);
+    height: 100%;
+}
+.hobbit[data-v-7958d817] {
+    background-image: url('http://www.bsdesigns.info/wp-content/uploads/2017/03/Luxury-hobbit-homes-X12D.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    color: white;
+    font-family: 'Macondo Swash Caps', cursive;
+    text-shadow: 0px 0px 5px black;
+}
+.btn-start[data-v-7958d817] {
+    background-color: rgba(241, 209, 105, 1);
+    color: black;
+}
+.btn-start[data-v-7958d817]:hover {
+    box-shadow: 0px 0px 30px white;
+}
+.btn-register[data-v-7958d817]:hover {
+    box-shadow: 0px 0px 30px white;
+}
+.btn-reg[data-v-7958d817]:hover {
+    box-shadow: 0px 0px 30px black;
+}
+.nav button[data-v-7958d817] {
+    margin-top: 3rem;
+}
+.navbar[data-v-7958d817] {
+    background-color: rgba(0, 0, 0, 0.644);
+    color: rgba(241, 209, 105, 1);
+}
+.navbar-image[data-v-7958d817] {
+    margin-top: 1em;
+    margin-left: 3em;
+    width: 75px;
+}
+.screenshot[data-v-7958d817] {
+    margin-right: 5em;
+    height: 25em;
+    font-family: 'Macondo Swash Caps', cursive;
+}
+.navbar-header[data-v-7958d817] {
+    padding-left: 40rem;
+}
+.navbar-brand[data-v-7958d817] {
+    font-size: 50px;
+    padding-bottom: 1em;
+    font-family: 'Great Vibes', cursive;
+}
+.info-text[data-v-7958d817] {
+    font-family: 'Macondo Swash Caps', cursive;
+}
+
+/*# sourceMappingURL=app.8612f0172c771409f4b2f38a5f098568.css.map*/

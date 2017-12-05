@@ -5,13 +5,13 @@ import router from '../router'
 import $ from 'jquery'
 
 let api = axios.create({
-  baseURL: 'http://localhost:3000/api/',
+  baseURL: '/api/',
   timeout: 2000,
   withCredentials: true
 })
 
 let auth = axios.create({
-  baseURL: 'http://localhost:3000/',
+  baseURL: '/',
   timeout: 2000,
   withCredentials: true
 })
