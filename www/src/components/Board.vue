@@ -24,7 +24,7 @@
       <div class="row">
         <div class="col-md-10">
           <div class="row">
-            <div class="col-md-2 list-div" v-for="list in lists">
+            <div droppable="true" v-on:drop.capture="" ondragover="event.preventDefault()" class="col-md-2 list-div" v-for="list in lists">
               <list :list="list"></list>
               <button class="btn btn-danger" @click="deleteList(list)">Down to the Balrog</button>
 

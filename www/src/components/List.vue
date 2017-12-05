@@ -3,7 +3,7 @@
         <div class="row list">
             <div class="col-md-12 well">
                 <h3>{{list.name}}</h3>
-                <div  v-for="task in tasks">
+                <div  draggable="true" v-for="task in tasks" v-on:dragstart.capture="moving">
                     <task :task="task"></task>
                 </div>
                 <form @submit.prevent="addNewTask">
@@ -41,6 +41,9 @@
            
         },
         methods: {
+            moving(event){
+                event.dataTransfer.setData('text/javascript', JSON.stringify(this.task))
+            },
             addNewTask() {
                 this.$store.dispatch('addNewTask', { name: this.newTask, listId: this.list._id, boardId: this.list.boardId })
                 this.newTask = ''
