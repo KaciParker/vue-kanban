@@ -12,10 +12,10 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <router-link :to="{name: 'login'}">
-                            <button class="btn btn-lg btn-start">Start Your Quest</button>
+                            <button class="btn btn-lg btn-start info-text">Start Your Quest</button>
                         </router-link>
                         <router-link :to="{name: 'signUp'}">
-                            <button class="btn btn-lg btn-register btn-success">Join the Fellowship</button>
+                            <button class="btn btn-lg btn-register btn-success info-text">Join the Fellowship</button>
                         </router-link>
                     </ul>
                 </div>

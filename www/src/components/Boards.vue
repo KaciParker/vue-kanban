@@ -11,7 +11,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <button class="btn btn-warning btn-logout btn-lg" @click="logout">Quest Complete</button>
+            <button class="btn btn-warning btn-logout btn-lg info-text" @click="logout">Quest Complete</button>
           </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -21,7 +21,7 @@
     <div class="row">
       <div class="col-md-2 col-md-offset-10">
         <button type="button" class="btn btn-forge" data-toggle="modal" data-target="#myModal">
-          <span class="glyphicon glyphicon-plus-sign"></span> FORGE NEW BOARD</button>
+          <span class="glyphicon glyphicon-plus-sign"></span class="info-text"> FORGE NEW BOARD</button>
       </div>
     </div>
     <!-- BOARD THUMBNAILS -->
@@ -37,7 +37,7 @@
         </router-link>
         <!-- REMOVE BUTTON -->
 
-        <button @click="removeBoard(board)" class="btn btn-danger delete-btn">Cast into Mt. Doom</button>
+        <button @click="removeBoard(board)" class="btn btn-danger delete-btn info-text">Cast into Mt. Doom</button>
 
         <!-- <span @click="removeBoard(board)">x</span> -->
       </div>
@@ -122,6 +122,8 @@
   .boards {
     background-image: url('https://images3.alphacoders.com/161/161177.jpg');
     height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
     /* background-color: black; */
   }
   .btn-logout:hover{

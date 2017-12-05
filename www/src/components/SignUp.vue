@@ -11,7 +11,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <router-link :to="{name: 'Home'}">
-                            <button class="btn btn-lg btn-shire btn-success">The Shire</button>
+                            <button class="btn btn-lg btn-shire btn-success info-text">The Shire</button>
                         </router-link>
                     </ul>
                 </div>
@@ -21,7 +21,7 @@
         </nav>
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-md-offset-3 sign-up">
+                <div class="col-md-6 col-md-offset-3 sign-up info-text">
                     <h2>Join the Fellowship to Rule Them All</h2>
                     <h3 class="text-danger" v-if="error"><b>YOU SHALL NOT PASS-words don't match</b></h3>
                     <form id="register" class="form" @submit.prevent="submitRegister">
@@ -138,6 +138,9 @@
         color: rgba(241, 209, 105, 1);
         text-shadow: 0px 0px 1px white;
         font-size: 20px;
+    }
+    .info-text {
+        font-family: 'Macondo Swash Caps', cursive;
     }
 
     

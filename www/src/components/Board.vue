@@ -12,7 +12,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <router-link :to="{name: 'Boards'}">
-              <button class="btn btn-success">Rivendale</button>
+                <button class="btn btn-warning btn-logout btn info-text" @click="logout">Quest Complete</button>
+              <button class="btn btn-success info-text">Rivendale</button>
             </router-link>
           </ul>
         </div>
@@ -35,7 +36,7 @@
           </div>
         </div>
         <div class="col-md-2">
-          <button class="btn btn-primary btn" @click="toggleInput">Add New Waypoint</button>
+          <button class="btn btn-primary btn info-text" @click="toggleInput">Add New Waypoint</button>
           <div class="card" v-if="input">
             <input type="text" placeholder="List Name" v-model="list">
             <button @click="addNewList" class="btn btn-success btn-sm">Submit</button>
@@ -99,14 +100,9 @@
         console.log(list)
         this.$store.dispatch('deleteList', list)
       },
-      // updateTask() {
-      //   var activeTask= this.activeTask
-      //   var list = this.lists[this.list]
-      //   debugger
-      //           activeTask.oldId = activeTask.listId
-      //           activeTask.listId = list._id
-      //           this.$store.dispatch('updateTask', activeTask)
-      //       },
+      logout() {
+        this.$store.dispatch('logout')
+      }
     }
   }
 </script>

@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <router-link :to="{name: 'Home'}">
-                            <button class="btn btn-lg btn-shire btn-success">The Shire</button>
+                            <button class="btn btn-lg btn-shire btn-success info-text">The Shire</button>
                         </router-link>
                     </ul>
                 </div>
@@ -22,7 +22,7 @@
         </nav>
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-md-offset-3 login">
+                <div class="col-md-6 col-md-offset-3 login info-text">
                     <h2>Join the Fellowship to Rule Them All</h2>
                     <!-- add error message if login fails -->
                     <p v-if="error"> {{error}}</p>
@@ -128,6 +128,9 @@
         color: rgba(241, 209, 105, 1);
         text-shadow: 0px 0px 1px white;
         font-size: 30px;
+    }
+    .info-text {
+        font-family: 'Macondo Swash Caps', cursive;
     }
    
 </style>
