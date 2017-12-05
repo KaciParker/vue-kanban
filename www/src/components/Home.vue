@@ -35,7 +35,7 @@
             <div class="col-md-3 col-md-offset-1 well screenshot">
                 <h3>Create</h3>
                 <div class="thumbnail projects-thumb">
-                    <a href="">
+                    <a >
                         <img src="../assets/boards.png" alt="">
                     </a>
                     <div class="caption">
