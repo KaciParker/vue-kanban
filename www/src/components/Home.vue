@@ -25,7 +25,7 @@
         </nav>
         <div class="jumbotron hobbit">
             <h1>Welcome Hobbits, Elves, Dwarves, and Men</h1>
-            <p>An fun, fantasy themed kanban website! Create boards, check off todos, all while making your tasks a little less
+            <p>A fun, fantasy themed kanban website! Create boards, check off todos, all while making your tasks a little less
                 tedious!</p>
             <router-link :to="{name: 'signUp'}">
                 <button class="btn btn-lg btn-reg btn-success">Join the Fellowship</button>
