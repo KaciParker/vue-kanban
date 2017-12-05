@@ -62,6 +62,7 @@
     .navbar-brand {
         font-size: 50px;
         padding-bottom: 1em;
+        font-family: 'Great Vibes', cursive;
     }
     .task-div{
         width: 100%;

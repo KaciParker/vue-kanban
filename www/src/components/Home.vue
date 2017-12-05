@@ -25,49 +25,55 @@
         </nav>
         <div class="jumbotron hobbit">
             <h1>Welcome Hobbits, Elves, Dwarves, and Men</h1>
-            <p>An fun, fantasy themed kanban website! Create boards, check off todos, all while making your tasks a little less tedious!</p>
+            <p>An fun, fantasy themed kanban website! Create boards, check off todos, all while making your tasks a little less
+                tedious!</p>
             <router-link :to="{name: 'signUp'}">
                 <button class="btn btn-lg btn-reg btn-success">Join the Fellowship</button>
             </router-link>
         </div>
         <div class="row">
             <div class="col-md-3 col-md-offset-1 well screenshot">
-                <h3>Screenshots!</h3>
+                <h3>Create</h3>
                 <div class="thumbnail projects-thumb">
                     <a href="">
-                        <img src="//placehold.it/300x250" alt="">
+                        <img src="../assets/boards.png" alt="">
                     </a>
                     <div class="caption">
-                        <h5>Project Name</h5>
+                        <h5>Boards</h5>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 well screenshot">
-                <h3>Of</h3>
+                <h3>Your Own</h3>
                 <div class="thumbnail projects-thumb">
-                    <a href="">
-                        <img src="//placehold.it/300x250" alt="">
+                    <a>
+                        <img src="../assets/list-task.png" alt="">
                     </a>
                     <div class="caption">
-                        <h5>Project Name</h5>
+                        <h5>Lists and Tasks</h5>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 well">
-                <h3>The Product!</h3>
+            <div class="col-md-3 well screenshot">
+                <h3>Themed...</h3>
                 <div class="thumbnail projects-thumb">
-                    <a href="">
-                        <img src="//placehold.it/300x250" alt="">
+                    <a>
+                        <img src="../assets/comments.png" alt="">
                     </a>
                     <div class="caption">
-                        <h5>Project Name</h5>
+                        <h5>Comments</h5>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row info jumbotron">
-            <div class="col-md-12">
-                <h1>Information about the product!</h1>
+            <div class="col-md-6 col-md-offset-3 text-justify info-text">
+                <h3>Join "Rule Them All" today! Sign up for a free account and manage all of your projects in a fun kanban-style
+                    website. Sure you could finish up tasks and be productive in a drab gray color scheme. But we ask this-
+                    why not CONQUER your to-dos?! Make your boards quests! Your lists as simple as defeating Saurumon, or
+                    as difficult as leaving the comforts of the Shire. Create your own boards, forge new lists, attach your
+                    tasks and get to questing..err.. commenting! Interactively moving your tasks from list to list is as
+                    easy as tossing a dwarf! So create an account, build some boards, and start having fun with your productivity.</h3>
             </div>
         </div>
     </div>
@@ -89,11 +95,12 @@
 </script>
 
 <style scoped>
-    .home{
+    .home {
         background-color: rgba(0, 0, 0, 0.897);
-        height:100%;
+        height: 100%;
     }
-    .hobbit{
+
+    .hobbit {
         background-image: url('http://www.bsdesigns.info/wp-content/uploads/2017/03/Luxury-hobbit-homes-X12D.jpg');
         background-repeat: no-repeat;
         background-size: 100%;
@@ -102,21 +109,26 @@
         font-family: 'Macondo Swash Caps', cursive;
         text-shadow: 0px 0px 5px black;
 
-        
+
     }
-    .btn-start{
-        background-color:rgba(241, 209, 105, 1);
+
+    .btn-start {
+        background-color: rgba(241, 209, 105, 1);
         color: black;
     }
-    .btn-start:hover{
+
+    .btn-start:hover {
         box-shadow: 0px 0px 30px white;
     }
-    .btn-register:hover{
+
+    .btn-register:hover {
         box-shadow: 0px 0px 30px white;
     }
-    .btn-reg:hover{
+
+    .btn-reg:hover {
         box-shadow: 0px 0px 30px black;
     }
+
     .nav button {
         margin-top: 3rem;
     }
@@ -133,7 +145,9 @@
     }
 
     .screenshot {
-        margin-right: 6em;
+        margin-right: 5em;
+        height: 25em;
+        font-family: 'Macondo Swash Caps', cursive;
     }
 
     .navbar-header {
@@ -143,6 +157,10 @@
     .navbar-brand {
         font-size: 50px;
         padding-bottom: 1em;
-        font-family: 'Kaushan Script', cursive;
+        font-family: 'Great Vibes', cursive;
+    }
+
+    .info-text {
+        font-family: 'Macondo Swash Caps', cursive;
     }
 </style>

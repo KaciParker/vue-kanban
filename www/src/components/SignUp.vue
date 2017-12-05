@@ -128,7 +128,7 @@
     .navbar-brand {
         font-size: 50px;
         padding-bottom: 1em;
-        font-family: 'Lobster', cursive;
+        font-family: 'Great Vibes', cursive;
     }
 
     

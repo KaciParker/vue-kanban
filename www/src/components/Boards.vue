@@ -157,6 +157,7 @@
   .navbar-brand {
     font-size: 50px;
     padding-bottom: 1em;
+    font-family: 'Great Vibes', cursive;
   }
   .boards-row{
     margin-top: 10px;

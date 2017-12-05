@@ -131,6 +131,7 @@
   .navbar-brand {
     font-size: 50px;
     padding-bottom: 1em;
+    font-family: 'Great Vibes', cursive;
   }
   .list-div{
     margin-left: 50px;

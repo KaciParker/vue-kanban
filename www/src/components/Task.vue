@@ -124,10 +124,11 @@
     .navbar-brand {
         font-size: 50px;
         padding-bottom: 1em;
+        font-family: 'Great Vibes', cursive;
     }
     .task-div{
         width: 100%;
-        height: 7em;
+        height: 10em;
         margin-bottom: 10px;
     }
     .modal .modal-dialog .modal-content{
