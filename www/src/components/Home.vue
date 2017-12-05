@@ -100,6 +100,7 @@
         background-position: center;
         color: white;
         font-family: 'Macondo Swash Caps', cursive;
+        text-shadow: 0px 0px 5px black;
 
         
     }
