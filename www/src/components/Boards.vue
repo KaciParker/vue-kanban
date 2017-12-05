@@ -27,7 +27,7 @@
     <!-- BOARD THUMBNAILS -->
     <div class="row boards-row">
       <div v-for="board in boards" class="col-md-3 board-btn">
-        <router-link :to="'/boards/'+board._id">
+        <router-link :to="'/boards/'+board._id" class="board">
           <div class="thumbnail">
             <!-- <img src="//placehold.it/100x100"> -->
             <div class="caption">
@@ -187,5 +187,8 @@
   }
   .board-btn:hover .delete-btn {
     display: inline-block
+  }
+  .board:hover{
+    text-decoration: none;
   }
 </style>

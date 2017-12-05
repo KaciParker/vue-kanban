@@ -48,7 +48,7 @@
                         </div>
                     </form>
                     <h4>Already have an account?
-                        <router-link :to="{name: 'login'}">Log in NOW!</router-link>
+                        <router-link :to="{name: 'login'}" class="login">Log in NOW!</router-link>
                     </h4>
 
                 </div>
@@ -129,6 +129,15 @@
         font-size: 50px;
         padding-bottom: 1em;
         font-family: 'Great Vibes', cursive;
+    }
+    .text-danger{
+        text-shadow: 0px 0px 5px white;
+    }
+    .login:hover{
+        text-decoration: none;
+        color: rgba(241, 209, 105, 1);
+        text-shadow: 0px 0px 1px white;
+        font-size: 20px;
     }
 
     

@@ -40,7 +40,7 @@
                         </div>
                     </form>
                     <h3>Don't have an account?
-                        <router-link :to="{name: 'signUp'}">Create one NOW!</router-link>
+                        <router-link :to="{name: 'signUp'}" class="register">Create one NOW!</router-link>
                     </h3>
 
                 </div>
@@ -122,6 +122,12 @@
         font-size: 50px;
         padding-bottom: 1em;
         font-family: 'Great Vibes', cursive;
+    }
+    .register:hover{
+        text-decoration: none;
+        color: rgba(241, 209, 105, 1);
+        text-shadow: 0px 0px 1px white;
+        font-size: 30px;
     }
    
 </style>
